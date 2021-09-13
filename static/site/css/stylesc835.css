@@ -175,8 +175,8 @@ nav .left a.logo {
 	width: 161px;
 	height: 36px;
 	float: left;
-	background-image: url('../img/logo.png');
-	background-size: 100%;
+	background-image: url('/static/favicon.png');
+	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 	margin: 7px 0px 5px 0px;
@@ -325,7 +325,7 @@ footer .left a.fast-poll-icon {
 	width: 36px;
 	height: 36px;
 	float: left;
-	background-image: url('https://fast-poll.com/site/img/fast-poll-icon.svg');
+	background-image: url('/static/favicon.png');
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -2336,7 +2336,7 @@ div#form-error label.catpcha-error {
   border: none;
   outline: none;
   color: #FFF;
-  background-color: #41db7b;
+  background-color: #800000;
   font-size: 22px;
   border-radius: 5px;
   font-weight: 600;
@@ -3950,7 +3950,7 @@ a.user-profile-dropdown-link {
 .user-profile-info-wrapper .user-profile-dropdown-wrapper .user-profile-action-button a {
   float: left;
   width: 100%;
-  background-color: #41db7b;
+  background-color: #800000;
   text-align: center;
   padding: 15px;
   font-weight: 600;
@@ -4151,7 +4151,7 @@ p.vote-inner-label {
   border: none;
   outline: none;
   color: #FFF;
-  background-color: #41db7b;
+  background-color: #800000;
   font-size: 22px;
   border-radius: 5px;
   font-weight: 600;
@@ -4475,7 +4475,7 @@ a.poll-results-button:hover {
   border: none;
   outline: none;
   color: #FFF;
-  background-color: #41db7b;
+  background-color: #800000;
   font-size: 22px;
   border-radius: 5px;
   font-weight: 600;
@@ -7061,7 +7061,7 @@ header.profile .profile-header-inner .edit-profile-link a:hover {
 .form-wrapper header.form-header a.header-action-button {
   float: left;
   padding: 22px 30px;
-	background-color: #41db7b;
+	background-color: #800000;
   font-size: 22px;
   color: #FFF;
   font-weight: 600;
@@ -7868,7 +7868,7 @@ header.profile .profile-header-inner .edit-profile-link a:hover {
   border: none;
   outline: none;
   color: #FFF;
-  background-color: #41db7b;
+  background-color: #800000;
 	font-size: 22px;
   border-radius: 5px;
   font-weight: 600;
@@ -7994,7 +7994,7 @@ a.copy-poll-url:hover {
   border: none;
   outline: none;
   color: #FFF;
-  background-color: #41db7b;
+  background-color: #800000;
 	font-size: 22px;
   border-radius: 5px;
   font-weight: 600;
@@ -8835,7 +8835,7 @@ section.error-page .error-message p {
 
 section.error-page .error-message a {
 	padding: 22px 30px;
-  background-color: #41db7b;
+  background-color: #800000;
   font-size: 22px;
   color: #FFF;
   font-weight: 600;
@@ -9878,7 +9878,7 @@ body.team-colours section.teams-home-cta.pricing-cta {
   border: none;
   outline: none;
   color: #FFF;
-  background-color: #41db7b;
+  background-color: #800000;
   font-size: 21px;
   border-radius: 5px;
   font-weight: 600;
@@ -10256,7 +10256,7 @@ body.join-team-body .team-session-outer-wrapper.join-team-page {
   border: none;
   outline: none;
   color: #FFF;
-  background-color: #41db7b;
+  background-color: #800000;
   font-size: 19px;
   border-radius: 5px;
   font-weight: 600;
@@ -10926,7 +10926,7 @@ main.home-page .notice-banner {
 }
 
 .reveal-modal.pro-modal .pro-modal-inner .pro-modal-right .pro-info-column a.green-action-button {
-  background-color: #41db7b;
+  background-color: #800000;
   padding: 19px 20px 18px 20px;
   margin-right: 20px;
   border-radius: 5px;
@@ -12515,7 +12515,7 @@ a.delete-stored-data-link:hover {
 	}
 	nav .mid .nav-mid-links a.nav-link-poll {
 	  color: #FFF;
-	  background-color: #42db7b;
+	  background-color: #800000;
 	  border-radius: 4px;
 	  padding: 16px 20px 16px 20px;
 	  font-weight: 700;
@@ -13450,7 +13450,7 @@ a.delete-stored-data-link:hover {
 	nav .left a.logo {
 		width: 35px;
 		height: 36px;
-		background-size: 161px;
+		/*background-size: 161px;*/
 		background-position: left;
 	}
 

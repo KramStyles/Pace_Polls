@@ -66,7 +66,7 @@ SVG = {
 }
 
 OFFICIAL = {
-    'sitename': 'PLUSMIR',
+    'sitename': 'Pacesetter Frontier Magazine',
     'telegram': '@plusmirconsultancy',
     'phone': '+234 702 0666 158',
     'mail': 'plsmrspprt@gmail.com',
