@@ -10,18 +10,18 @@
                     <p>Complete the below fields to create your poll</p>
                 </header>
 
-                <form action="" method="post" name="form" target="_self" id="poll-form">
+                <form action="" method="post" name="form_1" target="_self" id="poll-form">
 
                     <div class="input-group" data-id='1'>
                         <label for="poll-title">POLL TITLE</label>
                         <div class="input-group-field">
-                            <input type="text" name="poll-title" id="poll-title" placeholder="Eg. Gala Night Awards" data-msg="This option shouldn't be empty" required/>
+                            <input type="text" name="poll-title_1" id="poll-title" placeholder="Eg. Gala Night Awards" data-msg="This option shouldn't be empty" required/>
                         </div>
                     </div>
 
                     <div class="input-group">
                         <label for="poll-question">Poll question</label>
-                        <textarea placeholder="Eg. What is your favourite colour" id="poll_question" name="poll_question" tabindex="1" data-msg="You need to enter a poll question" autofocus
+                        <textarea placeholder="Eg. What is your favourite colour" id="poll_question" name="poll_question_1" tabindex="1" data-msg="You need to enter a poll question" autofocus
                                   required></textarea>
                     </div>
                     <div class="poll-options">
@@ -31,9 +31,6 @@
                             <div class="input-group-field">
                                 <input type="text" name="poll_option_1" id="poll_option_1" placeholder="Eg. Option 1" tabindex="2" data-msg="You need to enter a minimum of 2 options" required/>
                                 <div class="poll-option-group">
-                                    <div class="upload-image-button">
-                                        <a href="https://fast-poll.com/pro" onclick="store()" title="Go pro to add an image"><span>Add</span> Image</a>
-                                    </div>
                                     <div class="poll-colour-dropdown-wrapper">
                                         <a href="#" id="colour-block-button" class="colour-option-button-one red" title="Choose a colour for your poll option">
                                             <span></span>
@@ -44,42 +41,7 @@
                             <input type="text" value="red" class="colour_input" name="colour_option_1" id="colour_option_1" readonly/>
                         </div>
 
-                        {#                        <div class="input-group" data-id='2'>#}
-                        {#                            <label for="poll_option_2">Poll option</label>#}
-                        {#                            <div class="input-group-field">#}
-                        {#                                <input type="text" name="poll_option_2" id="poll_option_2" placeholder="Eg. Option 2" tabindex="3" data-msg="You need to enter a minimum of 2 options" required/>#}
-                        {#                                <div class="poll-option-group">#}
-                        {#                                    <div class="upload-image-button">#}
-                        {#                                        <a href="https://fast-poll.com/pro" onclick="store()" title="Go pro to add an image"><span>Add</span> Image</a>#}
-                        {#                                    </div>#}
-                        {#                                    <div class="poll-colour-dropdown-wrapper">#}
-                        {#                                        <a href="#" id="colour-block-button" class="colour-option-button-two green" title="Choose a colour for your poll option">#}
-                        {#                                            <span></span>#}
-                        {#                                        </a>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                            <input type="text" value="green" class="colour_input" name="colour_option_2" id="colour_option_2" readonly/>#}
-                        {#                        </div>#}
-                        {##}
-                        {#                        <div class="input-group" data-id='3'>#}
-                        {#                            <label for="poll_option_3">Poll option</label>#}
-                        {##}
-                        {#                            <div class="input-group-field">#}
-                        {#                                <input type="text" name="poll_option_3" id="poll_option_3" placeholder="Eg. Option 3" tabindex="4"/>#}
-                        {#                                <div class="poll-option-group">#}
-                        {#                                    <div class="upload-image-button">#}
-                        {#                                        <a href="https://fast-poll.com/pro" onclick="store()" title="Go pro to add an image"><span>Add</span> Image</a>#}
-                        {#                                    </div>#}
-                        {#                                    <div class="poll-colour-dropdown-wrapper">#}
-                        {#                                        <a href="#" id="colour-block-button" class="colour-option-button-three orange" title="Choose a colour for your poll option">#}
-                        {#                                            <span></span>#}
-                        {#                                        </a>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                            <input type="text" value="orange" class="colour_input" name="colour_option_3" id="colour_option_3" readonly/>#}
-                        {#                        </div>#}
+
 
                     </div>
 
@@ -87,7 +49,11 @@
                         <a href="#" class="new-field-button" title="Add another option to your poll">Add another option</a>
                         <a href="#" class="remove-field-button" title="Add another option to your poll">Remove last option</a>
 
-                        <p class="max-option-notice">Standard users can add a maximum of 15 Options.</p>
+                        <p class="max-option-notice">I believe 15 Options are already too much.</p>
+                    </div>
+                    <div class="form-divide"></div>
+                    <div class="input-group">
+                        <a href="#" class="add-new-poll" title="Add another poll question">Create New Poll Question</a>
                     </div>
                     <div class="form-divide"></div>
                     <div class="input-group split-field-left full-width-select">

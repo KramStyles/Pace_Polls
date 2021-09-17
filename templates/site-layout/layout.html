@@ -142,9 +142,9 @@
 </footer>
 
 <script src="/static/site/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-<script src="/static/site/js/moment.min.js" type="text/javascript"></script>
-<script src="/static/site/js/moment-timezone.min.js" type="text/javascript"></script>
-<script src="/static/site/js/moment-timezone-with-data.min.js" type="text/javascript"></script>
+{#<script src="/static/site/js/moment.min.js" type="text/javascript"></script>#}
+{#<script src="/static/site/js/moment-timezone.min.js" type="text/javascript"></script>#}
+{#<script src="/static/site/js/moment-timezone-with-data.min.js" type="text/javascript"></script>#}
 <script src="/static/site/js/calentim.min.js" type="text/javascript"></script>
 <script src="/static/site/js/tooltipster.bundle.min.js" type="text/javascript"></script>
 <script src="/static/site/js/jquery.reveal.js" type="text/javascript"></script>
@@ -184,9 +184,9 @@
         var colours_list = ["red", "green", "orange", "blue", "yellow", "purple", "turquoise", "pink", "light-blue", "grey", "pale-purple", "bright-pink", "dark-grey", "bright-orange", "dark-blue", "true-purple", "jet-blue", "smashed-pumpkin", "madder-lake", "offset-purple", "fiery-rose", "eggshell", "sonic-silver", "sunset-blue", "rajah", "light-coral", "mustard", "metallic-seaweed", "sea-green", "japanese-violet"];
         tab_count = (count + 1);
 
-        $('.new-field-button').on('click', function (e) {
+        $(document).on('click', '.new-field-button', function (e) {
             e.preventDefault();
-
+            $(".max-option-notice").hide();
             if (count > 1) {
                 $(".remove-field-button").show();
             }
@@ -195,7 +195,7 @@
                 $(".new-field-button").hide();
             } else {
 
-                var html = "<div class='input-group' data-id='" + count + "'><label for='poll_option_" + count + "'>Poll option</label><div class='input-group-field'><input type='text' name='poll_option_" + count + "' id='poll_option_" + count + "'  placeholder='Eg. Option " + count + "' tabindex='" + tab_count + "''/><div class='poll-option-group'><div class='upload-image-button'><a href='https://pacesetterfrontier.com/pro' title='Go pro to add an image' onclick='store()'><span>Add</span> Image</a></div><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='" + colours_list[colour_count] + "'><span></span></a></div></div></div><input type='text' value='" + colours_list[colour_count] + "' class='colour_input' name='colour_option_" + count + "' id='colour_option_" + count + "' readonly/></div>";
+                var html = "<div class='input-group' data-id='" + count + "'><label for='poll_option_" + count + "'>Poll option</label><div class='input-group-field'><input type='text' name='poll_option_" + count + "' id='poll_option_" + count + "'  placeholder='Eg. Option " + count + "' tabindex='" + tab_count + "''/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='" + colours_list[colour_count] + "'><span></span></a></div></div></div><input type='text' value='" + colours_list[colour_count] + "' class='colour_input' name='colour_option_" + count + "' id='colour_option_" + count + "' readonly/></div>";
                 $(".poll-options .input-group:last").after(html);
 
                 $("#poll_option_" + count).focus();
@@ -211,11 +211,39 @@
 
 
         });
-        $('.remove-field-button').on('click', function (e) {
+        $(document).on('click', '.add-new-poll', function (e) {
+            e.preventDefault();
+            $(".max-option-notice").hide();
+            if (count > 1) {
+                $(".remove-field-button").show();
+            }
+
+            if (count > 15) {
+                $(".new-field-button").hide();
+            }
+            else {
+
+                var html = "<div class='input-group' data-id='" + count + "'><label for='poll_option_" + count + "'>Poll option</label><div class='input-group-field'><input type='text' name='poll_option_" + count + "' id='poll_option_" + count + "'  placeholder='Eg. Option " + count + "' tabindex='" + tab_count + "''/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='" + colours_list[colour_count] + "'><span></span></a></div></div></div><input type='text' value='" + colours_list[colour_count] + "' class='colour_input' name='colour_option_" + count + "' id='colour_option_" + count + "' readonly/></div>";
+                $(".poll-options .input-group:last").after(html);
+
+                $("#poll_option_" + count).focus();
+                $("#scroll-point").scrollIntoView();
+                colour_count = (colour_count + 1) % colours_list.length;
+                tab_count = (tab_count + 1);
+                count++;
+                if (count == 16) {
+                    $(".new-field-button").hide();
+                    $(".max-option-notice").show();
+                }
+            }
+
+        });
+        $(document).on('click', '.remove-field-button', function (e) {
             e.preventDefault();
             if (count < 3) {
                 $(".remove-field-button").hide();
             } else {
+                $(".max-option-notice").hide();
                 let list = $('.poll-options .input-group');
                 let listLen = list.length - 1;
                 delete list[listLen];
@@ -234,6 +262,7 @@
 
 
         });
+
 
         // colour options click
         $(document).on('click', 'a#colour-block-button', function (e) {
@@ -314,63 +343,63 @@
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 {#<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129065603-1"></script>#}
-<script type='text/javascript' src='https://www.googletagmanager.com/gtag/js?id=UA-207452451-1' id='google_gtagjs-js' async></script>
-<script type='text/javascript' id='google_gtagjs-js-after'>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag('set', 'linker', {"domains": ["pacesetterfrontier.com"]});
-    gtag("js", new Date());
-    gtag("set", "developer_id.dZTNiMT", true);
-    gtag("config", "UA-207452451-1", {"anonymize_ip": true});
-    gtag("config", "G-F5YYJPT82Z");
-</script>
-<script>
-    $('body').ihavecookies({
-        title: "Cookies & Privacy",
-        message: "Fast Poll uses cookies to ensure you get the best experience.",
-        link: "https://pacesetterfrontier.com/privacy-policy/",
-        onAccept: function () {
-            gtag();
-        }
-    });
-
-    // GA function
-    /*function ga_code() {
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-        gtag('config', 'UA-129065603-1');
-    }
-    */
-
-
-    // Check accepted terms cookie is set
-    function getCookie(e) {
-        var o = document.cookie, n = e + "=", i = o.indexOf("; " + n);
-        if (-1 == i) {
-            if (0 != (i = o.indexOf(n))) return null
-        } else {
-            i += 2;
-            var t = document.cookie.indexOf(";", i);
-            -1 == t && (t = o.length)
-        }
-        return unescape(o.substring(i + n.length, t))
-    }
-
-    var myCookie = getCookie("cookieControl");
-    if (myCookie != null) {
-        // Call GA function if set
-        gtag();
-    }
-</script>
+{#<script type='text/javascript' src='https://www.googletagmanager.com/gtag/js?id=UA-207452451-1' id='google_gtagjs-js' async></script>#}
+{#<script type='text/javascript' id='google_gtagjs-js-after'>#}
+{#    window.dataLayer = window.dataLayer || [];#}
+{##}
+{#    function gtag() {#}
+{#        dataLayer.push(arguments);#}
+{#    }#}
+{##}
+{#    gtag('set', 'linker', {"domains": ["pacesetterfrontier.com"]});#}
+{#    gtag("js", new Date());#}
+{#    gtag("set", "developer_id.dZTNiMT", true);#}
+{#    gtag("config", "UA-207452451-1", {"anonymize_ip": true});#}
+{#    gtag("config", "G-F5YYJPT82Z");#}
+{#</script>#}
+{#<script>#}
+{#    $('body').ihavecookies({#}
+{#        title: "Cookies & Privacy",#}
+{#        message: "Fast Poll uses cookies to ensure you get the best experience.",#}
+{#        link: "https://pacesetterfrontier.com/privacy-policy/",#}
+{#        onAccept: function () {#}
+{#            gtag();#}
+{#        }#}
+{#    });#}
+{##}
+{#    // GA function#}
+{#    /*function ga_code() {#}
+{#        window.dataLayer = window.dataLayer || [];#}
+{##}
+{#        function gtag() {#}
+{#            dataLayer.push(arguments);#}
+{#        }#}
+{##}
+{#        gtag('js', new Date());#}
+{#        gtag('config', 'UA-129065603-1');#}
+{#    }#}
+{#    */#}
+{##}
+{##}
+{#    // Check accepted terms cookie is set#}
+{#    function getCookie(e) {#}
+{#        var o = document.cookie, n = e + "=", i = o.indexOf("; " + n);#}
+{#        if (-1 == i) {#}
+{#            if (0 != (i = o.indexOf(n))) return null#}
+{#        } else {#}
+{#            i += 2;#}
+{#            var t = document.cookie.indexOf(";", i);#}
+{#            -1 == t && (t = o.length)#}
+{#        }#}
+{#        return unescape(o.substring(i + n.length, t))#}
+{#    }#}
+{##}
+{#    var myCookie = getCookie("cookieControl");#}
+{#    if (myCookie != null) {#}
+{#        // Call GA function if set#}
+{#        gtag();#}
+{#    }#}
+{#</script>#}
 
 </body>
 </html>
