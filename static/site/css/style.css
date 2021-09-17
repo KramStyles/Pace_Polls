@@ -1,3 +1,8 @@
 .color-green{
     color: #41db7b;
 }
+.form-wrapper form .input-group a.remove-field-button{
+    float: right ;
+    background-color: #333333 ;
+    background-image: url('/static/site/svg/minus.svg');
+}

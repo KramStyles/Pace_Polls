@@ -496,7 +496,7 @@ footer .right .right-columns .footer-column a.footer-new-badge::after {
 }
 
 .home-fixed-nav .right a.create-poll-button:hover {
-	background-color: #3bbd6c;
+	background-color: #333333;
 }
 
 main.home-page nav {
@@ -582,7 +582,7 @@ header.home-header .home-header-inner a.action-button {
 }
 
 header.home-header .home-header-inner a.action-button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 header.home-header .home-header-inner p.sub {
@@ -2343,7 +2343,7 @@ div#form-error label.catpcha-error {
 	cursor: pointer;
 }
 .form-wrapper form .input-group button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 .form-wrapper form .input-group button:disabled {
@@ -2389,7 +2389,7 @@ div#form-error label.catpcha-error {
 	margin-bottom: 35px;
 }
 
-.form-wrapper form .input-group a.new-field-button {
+.form-wrapper form .input-group a.new-field-button, .remove-field-button {
 	float: left;
 	background-color: #4199FF;
 	padding: 22px 60px 20px 20px;
@@ -2397,12 +2397,15 @@ div#form-error label.catpcha-error {
 	color: #FFF;
 	font-size: 17px;
 	font-weight: 600;
-	background-image: url('https://fast-poll.com/site/img/icon-plus.svg');
+	/*background-image: url('https://fast-poll.com/site/img/icon-plus.svg');*/
+	background-image: url('/static/site/svg/plus.svg');
 	background-size: 17px;
 	background-repeat: no-repeat;
 	background-position: right 20px top 22px;
+    margin: 5px 0;
+
 }
-.form-wrapper form .input-group a.new-field-button:hover {
+.form-wrapper form .input-group a.new-field-button:hover, .remove-field-button:hover {
 	background-color: #357dd0;
 }
 .form-wrapper form .anon-poll-notice {
@@ -2783,7 +2786,7 @@ main .inner-wrapper .form-wrapper.settings {
 	display: none;
 }
 .inner-wrapper .avatar-settings-wrapper .avatar-change-button a.green:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 .settings-actions-block {
@@ -3362,7 +3365,7 @@ main .inner-wrapper .page-wrapper {
 }
 
 .item-dropdown a.green-text-link:hover {
-	color: #3bbd6c;
+	color: #333333;
 }
 
 
@@ -3962,7 +3965,7 @@ a.user-profile-dropdown-link {
 }
 
 .user-profile-info-wrapper .user-profile-dropdown-wrapper .user-profile-action-button a:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 
@@ -4158,7 +4161,7 @@ p.vote-inner-label {
 	cursor: pointer;
 }
 .poll-wrapper .poll-form .poll-footer button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 a.poll-results-button {
   float: right;
@@ -4483,7 +4486,7 @@ a.poll-results-button:hover {
 	text-align: center;
 }
 .poll-right-column .poll-submit-button a:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 .poll-right-column-inner {
@@ -6034,7 +6037,7 @@ a.poll-results-button:hover {
   margin-left: 15px;
 }
 .comments .comments-inner .comments-prompt a.login-button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 
@@ -7069,7 +7072,7 @@ header.profile .profile-header-inner .edit-profile-link a:hover {
   margin-top: 22px;
 }
 .form-wrapper header.form-header a.header-action-button:hover {
-	background-color: #3bbd6c;
+	background-color: #333333;
 }
 
 
@@ -7885,7 +7888,7 @@ header.profile .profile-header-inner .edit-profile-link a:hover {
 }
 
 .basic-modal-modal-wrapper a.modal-action-button:hover, .basic-modal-modal-wrapper button.modal-action-button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 
@@ -8009,7 +8012,7 @@ a.copy-poll-url:hover {
 }
 
 .reveal-modal.new-poll .new-poll-modal a.modal-action-button:hover, .reveal-modal .what-is-fastpoll-modal a.modal-action-button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 
@@ -8843,7 +8846,7 @@ section.error-page .error-message a {
   display: inline-block;
 }
 section.error-page .error-message a:hover {
-	background-color: #3bbd6c;
+	background-color: #333333;
 }
 
 
@@ -9102,7 +9105,7 @@ nav .mid a.create-poll-button {
 }
 
 nav .mid a.create-poll-button:hover {
-	background-color: #3bbd6c;
+	background-color: #333333;
 }
 
 
@@ -9121,7 +9124,7 @@ header.teams-header .teams-header-inner a.action-button {
 }
 
 header.teams-header .teams-header-inner a.action-button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 header.teams-header .teams-header-browser-window {
@@ -9393,7 +9396,7 @@ section.home-icons.team-section-one {
 }
 
 .pricing-page .pricing-blocks .pricing-block-wrapper .pricing-block a.pricing-action-button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 .pricing-page .pricing-blocks .pricing-block-wrapper .pricing-block.dark-theme {
@@ -9887,7 +9890,7 @@ body.team-colours section.teams-home-cta.pricing-cta {
   float: left;
 }
 .session-input-group button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 .session-input-group label.error {
@@ -10264,7 +10267,7 @@ body.join-team-body .team-session-outer-wrapper.join-team-page {
 }
 
 .session-start-form-wrapper .input-group button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 .session-start-form-wrapper .input-group label.error {
@@ -10337,7 +10340,7 @@ body.join-team-body .team-session-outer-wrapper.join-team-page {
 }
 
 .team-session-outer-wrapper.join-team-page .session-input-group button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 .team-session-outer-wrapper.join-team-page .joined-icon-group {
@@ -10939,7 +10942,7 @@ main.home-page .notice-banner {
 }
 
 .reveal-modal.pro-modal .pro-modal-inner .pro-modal-right .pro-info-column a.green-action-button:hover {
-  background-color: #3bbd6c;
+  background-color: #333333;
 }
 
 
@@ -12521,7 +12524,7 @@ a.delete-stored-data-link:hover {
 	  font-weight: 700;
 	}
 	nav .mid .nav-mid-links a.nav-link-poll:hover {
-	  background-color: #3bbd6c;
+	  background-color: #333333;
 	  color: #ffffff;
 	}
 	nav .mid {
@@ -13654,10 +13657,10 @@ a.delete-stored-data-link:hover {
 	  margin-right: 20px;
 	  font-size: 16px;
 	}
-	.form-wrapper form .input-group a.new-field-button {
+	.form-wrapper form .input-group a.new-field-button, .remove-field-button {
 		padding: 19px 18px 18px 18px;
 	  font-size: 16px;
-		background-image: none;
+		/*background-image: none;*/
 	  width: 100%;
 	  text-align: center;
 	}

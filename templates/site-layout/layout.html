@@ -187,6 +187,9 @@
         $('.new-field-button').on('click', function (e) {
             e.preventDefault();
 
+            if (count > 1) {
+                $(".remove-field-button").show();
+            }
 
             if (count > 15) {
                 $(".new-field-button").hide();
@@ -203,6 +206,29 @@
                 if (count == 16) {
                     $(".new-field-button").hide();
                     $(".max-option-notice").show();
+                }
+            }
+
+
+        });
+        $('.remove-field-button').on('click', function (e) {
+            e.preventDefault();
+            if (count < 3) {
+                $(".remove-field-button").hide();
+            } else {
+                let list = $('.poll-options .input-group');
+                let listLen = list.length - 1;
+                delete list[listLen];
+                let new_html = '';
+                for (i = 0; i < listLen; i++) {
+                    new_html += list[i].outerHTML;
+                }
+                $('.poll-options').html(new_html);
+
+
+                count--;
+                if (count >= 15) {
+                    $(".new-field-button").show();
                 }
             }
 
