@@ -190,12 +190,8 @@
             $(".max-option-notice").hide();
             var input_count = $(this).siblings("#input-count");
             var input_count_id = input_count.text();
-
+            input_count_id++;
             if (input_count_id > 1) {
-                {#input_count_id ++;#}
-                {#input_count.text(input_count_id);#}
-                {#alert(input_count_id);#}
-
                 $(".remove-field-button").show();
             }
 
@@ -210,10 +206,11 @@
                 $("#scroll-point").scrollIntoView();
                 colour_count = (colour_count + 1) % colours_list.length;
                 tab_count = (tab_count + 1);
-                input_count_id++;
+
                 input_count.text(input_count_id);
                 if (input_count_id == 16) {
                     $(".new-field-button").hide();
+                    console.log($(this).siblings());
                     $(this).siblings(".max-option-notice").show();
                 }
             }
