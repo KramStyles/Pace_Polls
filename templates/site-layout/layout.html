@@ -28,6 +28,7 @@
     <link href="/static/site/css/calentim.min9667.css?version=1.2" rel="stylesheet" type="text/css"/>
     <link href="/static/site/css/slim.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/site/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -213,28 +214,18 @@
         });
         $(document).on('click', '.add-new-poll', function (e) {
             e.preventDefault();
-            $(".max-option-notice").hide();
-            if (count > 1) {
-                $(".remove-field-button").show();
-            }
 
-            if (count > 15) {
+            var html = "<div class='input-group' data-id='" + count + "'><label for='poll_option_" + count + "'>Poll option</label><div class='input-group-field'><input type='text' name='poll_option_" + count + "' id='poll_option_" + count + "'  placeholder='Eg. Option " + count + "' tabindex='" + tab_count + "''/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='" + colours_list[colour_count] + "'><span></span></a></div></div></div><input type='text' value='" + colours_list[colour_count] + "' class='colour_input' name='colour_option_" + count + "' id='colour_option_" + count + "' readonly/></div>";
+            $(".poll-options .input-group:last").after(html);
+
+            $("#poll_option_" + count).focus();
+            $("#scroll-point").scrollIntoView();
+            colour_count = (colour_count + 1) % colours_list.length;
+            tab_count = (tab_count + 1);
+            count++;
+            if (count == 16) {
                 $(".new-field-button").hide();
-            }
-            else {
-
-                var html = "<div class='input-group' data-id='" + count + "'><label for='poll_option_" + count + "'>Poll option</label><div class='input-group-field'><input type='text' name='poll_option_" + count + "' id='poll_option_" + count + "'  placeholder='Eg. Option " + count + "' tabindex='" + tab_count + "''/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='" + colours_list[colour_count] + "'><span></span></a></div></div></div><input type='text' value='" + colours_list[colour_count] + "' class='colour_input' name='colour_option_" + count + "' id='colour_option_" + count + "' readonly/></div>";
-                $(".poll-options .input-group:last").after(html);
-
-                $("#poll_option_" + count).focus();
-                $("#scroll-point").scrollIntoView();
-                colour_count = (colour_count + 1) % colours_list.length;
-                tab_count = (tab_count + 1);
-                count++;
-                if (count == 16) {
-                    $(".new-field-button").hide();
-                    $(".max-option-notice").show();
-                }
+                $(".max-option-notice").show();
             }
 
         });
@@ -322,15 +313,6 @@
 
 
         // captcha error
-        $('form').on('submit', function (e) {
-            if (grecaptcha.getResponse() == "") {
-                e.preventDefault();
-                if ($("#form-error label.catpcha-error").length === 0) {
-                    $("#form-error").prepend("<label class='catpcha-error'>You must complete the captcha to create your poll</label>");
-                }
-            }
-
-        });
 
 
         $(".upload-image-button a").attr("href", "https://pacesetterfrontier.com");

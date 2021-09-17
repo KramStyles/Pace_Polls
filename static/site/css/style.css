@@ -6,7 +6,7 @@
     background-color: #333333 ;
     background-image: url('/static/site/svg/minus.svg');
 }
-.add-new-poll{
+.add-new-poll, .create-poll-button{
     border-radius: 5px;
     background-color: #dc0000;
     color: white;
@@ -20,4 +20,16 @@
 .add-new-poll:hover{
     background-color: #720000;
     color: white;
+}
+.create-poll-button{
+    background-color: #00D856;
+    border: none;
+    margin: 5px 0;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 1.35em;
+    font-family: "raleway";
+}
+.create-poll-button:hover{
+    background-color: #1d6d4b;
 }

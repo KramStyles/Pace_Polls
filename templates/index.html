@@ -19,43 +19,40 @@
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <label for="poll-question">Poll question</label>
-                        <textarea placeholder="Eg. What is your favourite colour" id="poll_question" name="poll_question_1" tabindex="1" data-msg="You need to enter a poll question" autofocus
-                                  required></textarea>
-                    </div>
-                    <div class="poll-options">
-
-                        <div class="input-group" data-id='1'>
-                            <label for="poll_option_1">Poll option</label>
-                            <div class="input-group-field">
-                                <input type="text" name="poll_option_1" id="poll_option_1" placeholder="Eg. Option 1" tabindex="2" data-msg="You need to enter a minimum of 2 options" required/>
-                                <div class="poll-option-group">
-                                    <div class="poll-colour-dropdown-wrapper">
-                                        <a href="#" id="colour-block-button" class="colour-option-button-one red" title="Choose a colour for your poll option">
-                                            <span></span>
-                                        </a>
+                    <div class="new-form">
+                        <div class="input-group">
+                            <label for="poll-question">Poll question</label>
+                            <textarea placeholder="Eg. What is your favourite colour" id="poll_question" name="poll_question_1" tabindex="1" data-msg="You need to enter a poll question" autofocus
+                                      required></textarea>
+                        </div>
+                        <div class="poll-options">
+                            <div class="input-group" data-id='1'>
+                                <label for="poll_option_1">Poll option</label>
+                                <div class="input-group-field">
+                                    <input type="text" name="poll_option_1" id="poll_option_1" placeholder="Eg. Option 1" tabindex="2" data-msg="You need to enter a minimum of 2 options" required/>
+                                    <div class="poll-option-group">
+                                        <div class="poll-colour-dropdown-wrapper">
+                                            <a href="#" id="colour-block-button" class="colour-option-button-one red" title="Choose a colour for your poll option">
+                                                <span></span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
+                                <input type="text" value="red" class="colour_input" name="colour_option_1" id="colour_option_1" readonly/>
                             </div>
-                            <input type="text" value="red" class="colour_input" name="colour_option_1" id="colour_option_1" readonly/>
                         </div>
 
+                        <div class="input-group">
+                            <a href="#" class="new-field-button" title="Add another option to your poll">Add another option</a>
+                            <a href="#" class="remove-field-button" title="Add another option to your poll">Remove last option</a>
 
-
+                            <p class="max-option-notice">I believe 15 Options are already too much.</p>
+                        </div>
+                        <div class="form-divide"></div>
                     </div>
+{#                    <div class="new-form"><div class="input-group"><label for="poll-question">Poll question</label><textarea placeholder="Eg. What is your favourite colour" id="poll_question" name="poll_question_1" tabindex="1" data-msg="You need to enter a poll question" autofocus required></textarea></div><div class="poll-options"><div class="input-group" data-id='1'><label for="poll_option_1">Poll option</label><div class="input-group-field"><input type="text" name="poll_option_1" id="poll_option_1" placeholder="Eg. Option 1" tabindex="2" data-msg="You need to enter a minimum of 2 options" required/><div class="poll-option-group"><div class="poll-colour-dropdown-wrapper"><a href="#" id="colour-block-button" class="colour-option-button-one red" title="Choose a colour for your poll option"><span></span></a></div></div></div><input type="text" value="red" class="colour_input" name="colour_option_1" id="colour_option_1" readonly/></div></div><div class="input-group"><a href="#" class="new-field-button" title="Add another option to your poll">Add another option</a><a href="#" class="remove-field-button" title="Add another option to your poll">Remove last option</a><p class="max-option-notice">I believe 15 Options are already too much.</p></div><div class="form-divide"></div></div>#}
 
-                    <div class="input-group">
-                        <a href="#" class="new-field-button" title="Add another option to your poll">Add another option</a>
-                        <a href="#" class="remove-field-button" title="Add another option to your poll">Remove last option</a>
 
-                        <p class="max-option-notice">I believe 15 Options are already too much.</p>
-                    </div>
-                    <div class="form-divide"></div>
-                    <div class="input-group">
-                        <a href="#" class="add-new-poll" title="Add another poll question">Create New Poll Question</a>
-                    </div>
-                    <div class="form-divide"></div>
                     <div class="input-group split-field-left full-width-select">
                         <label for="poll_category">Poll category</label>
                         <select id="poll_category" name="poll_category" data-msg="You need to choose a category for your poll" required>
@@ -100,15 +97,16 @@
                     <div class="form-divide"></div>
                     <div id="form-error">
                     </div>
-                    <div class="input-group">
-                        <button type="submit" class="create-poll-button" title="Create your poll">Create your poll</button>
-                    </div>
-                    <div class="subit-disabled-notice">
-                        An image is still uploading, you will be able to save once the image has finished uploading.
-                    </div>
                 </form>
+                <div class="input-group">
+                    <a href="#" class="add-new-poll" title="Add another poll question">Create New Poll Question</a>
+                </div>
+                <div class="form-divide"></div>
                 <div class="poll-secured">
                     Poll secured using cookies to prevent duplicate votes being cast.
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="create-poll-button" title="Create your poll">Create your poll</button>
                 </div>
             </div>
         </div>
