@@ -3,28 +3,32 @@
 }
 .form-wrapper form .input-group a.remove-field-button{
     float: right ;
-    background-color: #333333 ;
+    background-color: #aaaaaa;
     background-image: url('/static/site/svg/minus.svg');
 }
-.add-new-poll, .create-poll-button{
+.add-new-poll, .create-poll-button, .remove-last-poll{
     border-radius: 5px;
     background-color: #dc0000;
     color: white;
     font-weight: bold;
     width: 100%;
     padding: 22px;
+    margin: 5px 0;
     display: inline-block;
     text-align: center;
     transition: 0.5s ease all;
 }
-.add-new-poll:hover{
+.remove-last-poll{
+    background-color: #aaa;
+    color: white;
+}
+.add-new-poll:hover, .remove-last-poll:hover{
     background-color: #720000;
     color: white;
 }
 .create-poll-button{
     background-color: #00D856;
     border: none;
-    margin: 5px 0;
     cursor: pointer;
     text-transform: capitalize;
     font-size: 1.35em;
