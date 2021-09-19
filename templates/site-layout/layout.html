@@ -187,7 +187,6 @@
 
         $(document).on('click', '.new-field-button', function (e) {
             e.preventDefault();
-            $(".max-option-notice").hide();
             var input_count = $(this).siblings("#input-count");
             var input_count_id = input_count.text();
             input_count_id++;
@@ -200,22 +199,24 @@
             } else {
                 counti = `form_${form_id}_input${input_count_id}`;
                 var html = "<div class='input-group' data-id='" + counti + "'><label for='poll_option_" + counti + "'>Poll option</label><div class='input-group-field'><input type='text' name='poll_option_" + counti + "' id='poll_option_" + counti + "'  placeholder='Eg. Option " + input_count_id + "' tabindex='" + tab_count + "''/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='" + colours_list[colour_count] + "'><span></span></a></div></div></div><input type='text' value='" + colours_list[colour_count] + "' class='colour_input' name='colour_option_" + counti + "' id='colour_option_" + counti + "' readonly/></div>";
-                $(".poll-options .input-group:last").after(html);
+
+
+                $(this).parent('.input-group').siblings('.poll-options').children(".poll-options .input-group:last").after(html);
 
                 $("#poll_option_" + counti).focus();
-                $("#scroll-point").scrollIntoView();
+                {#$("#scroll-point").scrollIntoView();#}
                 colour_count = (colour_count + 1) % colours_list.length;
                 tab_count = (tab_count + 1);
 
                 input_count.text(input_count_id);
                 if (input_count_id == 16) {
                     $(".new-field-button").hide();
+                    debugger;
+
                     console.log($(this).siblings());
                     $(this).siblings(".max-option-notice").show();
                 }
             }
-
-
         });
 
         $(document).on('click', '.add-new-poll', function (e) {
@@ -223,12 +224,8 @@
 
             form_id++;
             var html = "<div class='input-group' data-id='" + count + "'><label for='poll_option_" + count + "'>Poll option</label><div class='input-group-field'><input type='text' name='poll_option_" + count + "' id='poll_option_" + count + "'  placeholder='Eg. Option " + count + "' tabindex='" + tab_count + "''/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='" + colours_list[colour_count] + "'><span></span></a></div></div></div><input type='text' value='" + colours_list[colour_count] + "' class='colour_input' name='colour_option_" + count + "' id='colour_option_" + count + "' readonly/></div>";
-            var html = `<div class='new-form' id='form_${form_id}'><div class='input-group'><label for='form_${form_id}_poll-question'>POLL QUESTION ${form_id}</label><textarea placeholder='Eg. What is your favourite colour' id='form_${form_id}_poll_question' name='form_${form_id}_poll_question_1' tabindex='1' data-msg='You need to enter a poll question' autofocus required></textarea></div><div class='poll-options'><div class='input-group' data-id='1'><label for='form_${form_id}_poll_option_1'>Poll option</label><div class='input-group-field'><input type='text' name='form_${form_id}_poll_option_1' id='form_${form_id}_poll_option_1' placeholder='Eg. Option ' tabindex='2' data-msg='You need to enter a minimum of 2 options' required/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='colour-option-button-one red' title='Choose a colour for your poll option'><span></span></a></div></div></div><input type='text' value='red' class='colour_input' name='form_${form_id}_colour_option_1' id='form_${form_id}_colour_option_1' readonly/></div></div><div class='input-group'><a href='#' class='new-field-button' title='Add another option to your poll'>Add another option</a><div id="input-count">1</div><a href='#' class='remove-field-button' title='Add another option to your poll'>Remove last option</a><p class='max-option-notice'>I believe 15 Options are already too much.</p></div><div class='form-divide'></div></div>`;
+            var html = `<div class='new-form' id='form_${form_id}'><div class='input-group'><label for='form_${form_id}_poll-question'>POLL QUESTION ${form_id}</label><textarea placeholder='Eg. What is your favourite colour' id='form_${form_id}_poll_question' name='form_${form_id}_poll_question_1' tabindex='1' data-msg='You need to enter a poll question' autofocus required></textarea></div><div class='poll-options'><div class='input-group' data-id='1'><label for='form_${form_id}_poll_option_1'>Poll option</label><div class='input-group-field'><input type='text' name='form_${form_id}_poll_option_1' id='form_${form_id}_poll_option_1' placeholder='Eg. Option 1' tabindex='2' data-msg='You need to enter a minimum of 2 options' required/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='colour-option-button-one red' title='Choose a colour for your poll option'><span></span></a></div></div></div><input type='text' value='red' class='colour_input' name='form_${form_id}_colour_option_1' id='form_${form_id}_colour_option_1' readonly/></div></div><div class='input-group'><a href='#' class='new-field-button' title='Add another option to your poll'>Add another option</a><div id="input-count">1</div><a href='#' class='remove-field-button' title='Add another option to your poll'>Remove last option</a><p class='max-option-notice'>I believe 15 Options are already too much.</p></div><div class='form-divide'></div></div>`;
 
-            {#$("#poll_option_" + count).focus();#}
-            {#$("#scroll-point").scrollIntoView();#}
-            {#colour_count = (colour_count + 1) % colours_list.length;#}
-            {#tab_count = (tab_count + 1);#}
             $(".new-form:last").after(html);
             if (form_id == 5) {
                 $(".add-new-poll").hide();

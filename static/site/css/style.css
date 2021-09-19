@@ -37,3 +37,6 @@
 .create-poll-button:hover{
     background-color: #1d6d4b;
 }
+#input-count{
+    display: none;
+}
