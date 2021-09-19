@@ -4,6 +4,7 @@ from functions import functions
 app = Flask(__name__)
 funcs = functions()
 
+
 @app.route('/')
 def hello_poll():
     return render_template('index.html')

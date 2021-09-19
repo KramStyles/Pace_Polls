@@ -1037,6 +1037,7 @@ main .inner-wrapper .form-wrapper {
   float: left;
   width: 100%;
   margin-bottom: 35px;
+    display: block;
 }
 
 .form-wrapper form .input-group:last-child {
