@@ -46,10 +46,7 @@ $(document).ready(function () {
             $(this).parent('.input-group').siblings('.poll-options').children(".poll-options .input-group:last").after(html);
 
             $("#poll_option_" + counti).focus();
-            {
-                #$("#scroll-point").scrollIntoView();
-                #
-            }
+            //$("#scroll-point").scrollIntoView();
             colour_count = (colour_count + 1) % colours_list.length;
             tab_count = (tab_count + 1);
 
@@ -90,7 +87,7 @@ $(document).ready(function () {
                 alert('You cannot delete the only poll question')
             }
         }
-    })
+    });
     $(document).on('click', '.remove-field-button', function (e) {
             e.preventDefault();
             var input_count = $(this).siblings("#input-count");
@@ -101,10 +98,8 @@ $(document).ready(function () {
                 $(this).hide();
             } else {
                 $(this).siblings(".max-option-notice").hide();
-
                 $(this).parent('.input-group').siblings('.poll-options').children(".poll-options .input-group:last").remove();
                 input_count.text(input_count_id);
-
                 if (input_count_id <= 10) {
                     $(".new-field-button").show();
                 }
@@ -112,6 +107,7 @@ $(document).ready(function () {
         }
     );
 
+    myAjax('.create-poll-button', '#poll-form', 'create_poll');
 
     // colour options click
     $(document).on('click', 'a#colour-block-button', function (e) {
@@ -164,10 +160,10 @@ $(document).ready(function () {
     $('textarea').autogrow({onInitialize: true});
 
     // clear local localStorage
-    // if (localStorage.getItem("poll_question") != null) {
-    // 	var html="<a href='https://pacesetterfrontier.com/new' class='delete-stored-data-link'>Remove saved poll data</a>";
-    // 	$(".poll-secured").after(html);
-    // }
+    if (localStorage.getItem("poll_question") != null) {
+        var html = "<a href='https://pacesetterfrontier.com/new' class='delete-stored-data-link'>Remove saved poll data</a>";
+        $(".poll-secured").after(html);
+    }
 
 
     // captcha error
@@ -177,3 +173,32 @@ $(document).ready(function () {
 
 
 });
+
+function myAjax(element, sentform, url, loc = '', refresh = 0, mod = false) {
+    $(element).click(function (e) {
+        e.preventDefault();
+        frm = $(sentform);
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: frm.serialize(),
+            success: function (data) {
+                if (data == 'ok') {
+                    bootbox.alert("<p class='text-success'>Successful</p>");
+                    if (loc !== '') {
+                        setTimeout(() => {
+                            location.assign(loc)
+                        }, 2000)
+                    }
+                    if (refresh === 1) {
+                        setTimeout(() => {
+                            window.top.location = window.top.location;
+                        }, 2000)
+                    }
+                } else {
+                    bootbox.alert("<p class='text-danger'>" + data + "</p>");
+                }
+            }
+        })
+    })
+}
