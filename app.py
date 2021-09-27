@@ -26,7 +26,6 @@ def login():
 @app.route('/create_poll', methods=['POST'])
 def create_poll():
     title = category = ''
-    questions = {}
     forms = {}
     key = ""
     c = 0
@@ -56,9 +55,20 @@ def create_poll():
         if db.select('poll_table', f"where title = '{title}'", "title"):
             msg = "Title already exists"
         else:
-            db_questions = funcs.python_to_json(forms)
+            questions = {
+                'title': title,
+                'text': forms
+            }
+            db_questions = funcs.python_to_json(questions)
             noww = datetime.now().strftime("%A %B %d, %Y | %H:%M:%S")
-            msg = db.insert('poll_table', f"""'{title}', '{category}', "{db_questions}", '{noww}'""", "title, category, questions, date")
+            msg = db.insert('poll_table', f"""'{title}', '{category}', '{noww}'""", "title, category, date")
+            try:
+                filename = f"{file_url}{title}.km"
+                file = open(filename, 'a')
+                file.write(db_questions)
+                file.close()
+            except Exception as err:
+                msg = "File making error: " + str(err)
     except Exception as err:
         msg = "Questions Error: " + str(err)
         print(err)

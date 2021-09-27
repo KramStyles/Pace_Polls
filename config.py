@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 secKey = secrets.token_urlsafe(32)
 BASE_URL = "http://127.0.0.1:5000/"
-css = scripts = ''
+file_url = 'static/files/'
 
 SVG = {
     'wallet': """<span class="svg-icon"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-03-11-144509/theme/html/demo7/dist/../src/media/svg/icons/Shopping/Wallet2.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -86,28 +86,4 @@ dashmenu = [['dashboard', 'Dashboard', SVG['home']],
 submenu = [  # ['activity_settings', 'Activity'], ['api_settings', 'Api'], ['application_settings', 'Application'],['fees_settings', 'Fees'],
     ['payment_settings', 'Payment'], ['privacy_settings', 'Privacy'], ['profile_settings', 'Profile'], ['security_settings', 'Security']]
 
-adminmenu = [
-    ['admin_dashboard', 'fa-laptop'],
-    ['users', 'fa-group'],
-    # ['wallets', 'fa-money'],
-    ['investments', 'fa-pie-chart'],
-    ['withdrawals', 'fa-drivers-license-o'],
-    # ['supports', 'fa-envelope-open-o'],
-    ['notifications', 'fa-bell']]
 
-
-class Config(object):
-    Seckey = secKey
-
-# class Production(Config):
-#     BASE_URL = 'https://sitename.com'
-#     DB_NAME = "premium_dbd"
-#     DB_USERNAME = "root"
-#     DB_PASSWORD = ""
-#
-#
-# class Development(Config):
-#     BASE_URL = 'http://127.0.0.1:5000/'
-#     DB_NAME = "dell_db"
-#     DB_USERNAME = "root"
-#     DB_PASSWORD = ""
