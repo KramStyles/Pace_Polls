@@ -72,6 +72,13 @@ OFFICIAL = {
     'mail': 'plsmrspprt@gmail.com',
 }
 
+badge_colours = [
+"lightyellow", "skyblue", "peach", "lightgreen", "lightviolet", "gold"
+ "skygreen", "seablue", "hotpink", "lightblue", "violet", "hotpeach",
+ "hotgold", "cyan", "darkyellow", "hotblue", "seablue", "funnyviolet",
+ "indigo", "lightindigo", "hotgreen", "dullyellow", "blue", "dullindigo"
+]
+
 menu = [['.', 'Home'], ['about', 'About Us'], ['services', 'Our Services'], ['faq', 'FAQs'],
         ['contact', 'Contact Us'], ['login', 'Login']]
 
