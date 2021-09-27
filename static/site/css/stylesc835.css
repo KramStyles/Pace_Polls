@@ -3161,7 +3161,7 @@ main .inner-wrapper .page-wrapper {
 	background: #FFFFFF;
 	box-shadow: 0px 7px 14px rgba(0, 0, 0, 0.07);
 	border-radius: 7px;
-	padding: 40px 45px 40px 45px;
+	padding: 15px;
 	position: relative;
 	transition: box-shadow 0.5s ease;
 }
@@ -13082,7 +13082,7 @@ a.delete-stored-data-link:hover {
 
 
 	.polls-list a.item {
-	  padding: 30px 35px;
+	  padding: 10px;
 	}
 	.polls-list.poll-list-options a.item {
 	  padding: 30px 35px 80px 35px;
