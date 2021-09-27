@@ -22,6 +22,16 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/results')
+def results():
+    return render_template('results.html')
+
+
+@app.route('/polls')
+def polls():
+    return render_template('polls.html')
+
+
 ##########################################
 @app.route('/create_poll', methods=['POST'])
 def create_poll():
