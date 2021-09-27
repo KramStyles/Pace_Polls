@@ -22,7 +22,7 @@ uploadFolder = '/static/uploads'
 allowedExtensions = {'pdf', 'png', 'jpg', 'jpeg'}
 allowedImageExtensions = {'png', 'jpg', 'jpeg'}
 
-DBFile = 'database/database.sql'
+DBFile = 'static/site/db.sqlite'
 
 
 class dbfunctions:

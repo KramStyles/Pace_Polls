@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" value="red" class="colour_input" name="colour_option_1" id="colour_option_1" readonly/>
+                                <input type="text" value="red" class="colour_input" name="colour_1" id="colour_option_1" readonly/>
                             </div>
                         </div>
 
@@ -58,32 +58,11 @@
                         <label for="poll_category">Poll category</label>
                         <select id="poll_category" name="poll_category" data-msg="You need to choose a category for your poll" required>
                             <option value="" disabled selected>Choose a Category</option>
-                            <option value="">Animals</option>
-                            <option value="">Art</option>
-                            <option value="">Books</option>
-                            <option value="">Colour</option>
-                            <option value="">Crypto</option>
-                            <option value="">Days</option>
-                            <option value="">Drink</option>
-                            <option value="">Food</option>
-                            <option value="">Gaming</option>
-                            <option value="">Healthcare</option>
-                            <option value="">History</option>
-                            <option value="">Investment</option>
-                            <option value="">Mobile Development</option>
-                            <option value="">Movies</option>
-                            <option value="">Music</option>
-                            <option value="">News</option>
-                            <option value="">Politics</option>
-                            <option value="">Random</option>
-                            <option value="">Science</option>
-                            <option value="">Social</option>
-                            <option value="">Sport</option>
-                            <option value="">Startup</option>
-                            <option value="">Tv</option>
-                            <option value="">Web Design</option>
-                            <option value="">Web Development</option>
-                            <option value="">Week</option>
+
+                            {% for cate in pg['categories'] %}
+                                <option value="{{ cate[1] }}">{{ cate[1]|title }}</option>
+                            {% endfor %}
+
                         </select>
                     </div>
                     <div class="input-group split-field-right full-width-select">
