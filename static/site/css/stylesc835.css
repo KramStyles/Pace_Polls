@@ -3656,135 +3656,141 @@ a.disabled-edit-link span {
   font-weight: 700;
 }
 
-/* Tag colours */
-p.badge.random, p.poll-tag.random {
+/* Tag colours
+ lightyellow, skyblue, peach, lightgreen, lightviolet, gold
+ skygreen, seablue, hotpink, lightblue, violet, hotpeach,
+ hotgold, cyan, darkyellow, hotblue, seablue, funnyviolet,
+ indigo, lightindigo, hotgreen, dullyellow, blue, dullindigo,
+
+ */
+p.badge.badge_lightyellow, p.poll-tag.badge_lightyellow {
   background-color: #FFFCB9 !important;
   color: #626025 !important;
 }
 
-p.badge.web-design, p.poll-tag.web-design {
+p.badge.badge_skyblue, p.poll-tag.badge_skyblue {
   background-color: #dcedff !important;
   color: #587ca9 !important;
 }
 
 
-p.badge.web-development, p.poll-tag.web-development {
+p.badge.badge_lightgreen, p.poll-tag.badge_lightgreen {
   background-color: #ABFFCA !important;
   color: #2A7445 !important;
 }
 
-p.badge.mobile-development, p.poll-tag.mobile-development {
+p.badge.badge_peach, p.poll-tag.badge_peach {
   background-color: #FFB9B9 !important;
   color: #8D2E2E !important;
 }
 
-p.badge.gaming, p.poll-tag.gaming {
+p.badge.badge_lightviolet, p.poll-tag.badge_lightviolet {
 	background-color: #B9C6FF !important;
   color: #3448A2 !important;
 }
 
-p.badge.healthcare, p.poll-tag.healthcare {
+p.badge.badge_gold, p.poll-tag.badge_gold {
 	background-color: #FFE1A3 !important;
   color: #805F1D !important;
 }
 
-p.badge.movies, p.poll-tag.movies {
+p.badge.badge_skygreen, p.poll-tag.badge_skygreen {
   background-color: #C9FFB7 !important;
   color: #4B7323 !important;
 }
 
-p.badge.tv, p.poll-tag.tv {
+p.badge.badge_hotpink, p.poll-tag.badge_hotpink {
   background-color: #FFB9E7 !important;
   color: #8D356F !important;
 }
 
 
-p.badge.crypto, p.poll-tag.crypto {
+p.badge.badge_seablue, p.poll-tag.badge_seablue {
   background-color: #afe6ff !important;
   color: #20586b !important;
 }
 
-p.badge.startup, p.poll-tag.startup {
+p.badge.badge_lightblue, p.poll-tag.badge_lightblue {
   background-color: #b8f8ff !important;
   color: #356360 !important;
 }
 
-p.badge.investment, p.poll-tag.investment {
+p.badge.badge_violet, p.poll-tag.badge_violet {
   background-color: #8194ff !important;
   color: #3b4263 !important;
 }
 
-p.badge.animals, p.poll-tag.animals {
+p.badge.badge_hotpeach, p.poll-tag.badge_hotpeach {
   background-color: #ffbea9 !important;
   color: #734334 !important;
 }
 
-p.badge.art, p.poll-tag.art {
+p.badge.badge_pink, p.poll-tag.badge_pink {
   background-color: #ff7777 !important;
   color: #671318 !important;
 }
 
-p.badge.colour, p.poll-tag.colour {
+p.badge.badge_hotgold, p.poll-tag.badge_hotgold {
   background-color: #ffb677 !important;
   color: #693e17 !important;
 }
 
-p.badge.food, p.poll-tag.food {
+p.badge.badge_darkyellow, p.poll-tag.badge_darkyellow {
   background-color: #fbea95 !important;
   color: #796c2c !important;
 }
 
-p.badge.history, p.poll-tag.history {
+p.badge.badge_cyan, p.poll-tag.badge_cyan {
   background-color: #b6fff2 !important;
   color: #34736b !important;
 }
 
-p.badge.music, p.poll-tag.music {
+p.badge.badge_hotblue, p.poll-tag.badge_hotblue {
   background-color: #b6f2ff !important;
   color: #33666d !important;
 }
 
-p.badge.news, p.poll-tag.news {
+p.badge.badge_funnyviolet, p.poll-tag.badge_funnyviolet {
   background-color: #d0eaff !important;
   color: #576771 !important;
 }
 
-p.badge.politics, p.poll-tag.politics {
+p.badge.badge_funnypink, p.poll-tag.badge_funnypink {
   background-color: #ffafa7 !important;
   color: #543735 !important;
 }
 
-p.badge.science, p.poll-tag.science {
+p.badge.badge_indigo, p.poll-tag.badge_indigo {
   background-color: #aebfff !important;
   color: #454f6b !important;
 }
 
-p.badge.social, p.poll-tag.social {
+p.badge.badge_lightindigo, p.poll-tag.badge_lightindigo {
   background-color: #83c8ff !important;
   color: #004775 !important;
 }
 
-p.badge.sport, p.poll-tag.sport {
+p.badge.badge_hotgreen, p.poll-tag.badge_hotgreen {
   background-color: #83ffb5 !important;
   color: #1d6d4b !important;
 }
 
-p.badge.book, p.poll-tag.book {
+p.badge.badge_dullyellow, p.poll-tag.badge_dullyellow {
   background-color: #ffe9bb;
   color: #615742;
 }
 
-p.badge.days, p.poll-tag.days {
+p.badge.badge_blue, p.poll-tag.badge_blue {
 	background-color: #49bbff;
 	color: #fff;
 }
 
-p.badge.drink, p.poll-tag.drink {
+p.badge.badge_dullgreen, p.poll-tag.badge_dullgreen {
   background-color: #97e8ec;
   color: #397073;
 }
 
-p.badge.week, p.poll-tag.week {
+p.badge.badge_dullindigo, p.poll-tag.badge_dullindigo {
 	background-color: #f7e3ff;
 	color: #846b8e;
 }

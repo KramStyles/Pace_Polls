@@ -32,6 +32,11 @@ def polls():
     return render_template('polls.html')
 
 
+@app.route('/polls/<title>')
+def polls_title(title):
+    return render_template('single-poll.html')
+
+
 ##########################################
 @app.route('/create_poll', methods=['POST'])
 def create_poll():
