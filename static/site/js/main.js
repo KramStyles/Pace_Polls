@@ -107,7 +107,7 @@ $(document).ready(function () {
         }
     );
 
-    myAjax('.create-poll-button', '#poll-form', 'create_poll');
+    myAjax('.create-poll-button', '#poll-form', 'create_poll', '', 1);
 
     // colour options click
     $(document).on('click', 'a#colour-block-button', function (e) {
