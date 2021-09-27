@@ -7,6 +7,11 @@ funcs = functions()
 db = dbfunctions()
 
 
+@app.context_processor
+def showall():
+    return dict(baseurl=BASE_URL)
+
+
 @app.route('/')
 def hello_poll():
     categories = db.select('category_table')
@@ -29,7 +34,8 @@ def results():
 
 @app.route('/polls')
 def polls():
-    return render_template('polls.html')
+    polls = db.select('poll_table')
+    return render_template('polls.html', polls=polls)
 
 
 @app.route('/polls/<title>')

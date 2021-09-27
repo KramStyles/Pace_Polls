@@ -3139,7 +3139,7 @@ main .inner-wrapper .page-wrapper {
 /* Polls list */
 
 .polls-list .item-wrapper {
-	margin-bottom: 50px;
+    margin-bottom: 33px;
   float: left;
   width: 100%;
   position: relative;
@@ -3147,7 +3147,7 @@ main .inner-wrapper .page-wrapper {
 }
 
 .polls-list .item-wrapper:last-child {
-  margin-bottom: 0px;
+  /*margin-bottom: 0px;*/
 }
 
 .polls-list {

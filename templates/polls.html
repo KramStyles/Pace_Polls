@@ -19,20 +19,23 @@
 {#                        </div>#}
 {#                    </div>#}
                 </header>
-                <div class="polls-list animated zoomIn">
+                {% for poll in polls %}
+                    <div class="polls-list animated zoomIn">
                     <div class="item-wrapper">
-                        <a href="https://fast-poll.com/poll/results/bf7ab9a5" class="item" title="Team Y">
-                            <p class="badge badge_hotgreen">Random</p>
-                            <h2>Team Y</h2>
+                        <a href="{{ baseurl }}polls/{{ poll[1] }}" class="item" title="Team Y">
+                            <p class="badge badge_{{ poll[5] }}">{{ poll[2] }}</p>
+                            <h2>{{ poll[2]|title }}</h2>
                             <p class="date">Created
-                                <time class="timeago" datetime="2021-09-27T14:25:21+0000" title="27th September 2021">about 5 hours ago</time>
+                                <time class="timeago" datetime="{{ poll[3] }}" title="{{ poll[3] }}">{{ poll[3] }}</time>
                             </p>
                             <div class="votes-count">
-                                <p>6 Votes</p>
+                                <p>0 Vote(s)</p>
                             </div>
                         </a>
                     </div>
                 </div>
+                {% endfor %}
+
                 <div class="pagination">
                     <ul>
                         <li><a href="#" class="active">1</a></li>
