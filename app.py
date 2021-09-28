@@ -50,9 +50,11 @@ def polls():
 @app.route('/polls/<title>')
 def polls_title(title):
     info = {
-        'title': title,
+        'title': title.title(),
     }
     return render_template('single-poll.html', pg=info)
+
+
 
 
 ##########################################
@@ -106,6 +108,14 @@ def create_poll():
         msg = "Questions Error: " + str(err)
         print(err)
     return msg
+
+# ERROR HANDLING PAGES
+@app.errorhandler(404)
+def not_found(error=''):
+    info = {
+        'title': error.title(),
+    }
+    return render_template('404.html', pg=info)
 
 
 if __name__ == '__main__':
