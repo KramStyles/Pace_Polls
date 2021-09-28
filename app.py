@@ -54,10 +54,10 @@ def polls_title(title):
     else:
         try:
             file = open(f"static/files/{title}.km", 'r')
-            file = funcs.json_to_python(file)
-            print(file)
+            file = funcs.json_to_python(file.read())
             info = {
                 'title': title.title(),
+                'questions': file
             }
             return render_template('single-poll.html', pg=info)
         except Exception as err:
@@ -102,7 +102,8 @@ def create_poll():
         else:
             questions = {
                 'title': title,
-                'text': forms
+                'text': forms,
+                'category': category
             }
             db_questions = funcs.python_to_json(questions)
             noww = datetime.now().strftime("%A %B %d, %Y | %H:%M:%S")
