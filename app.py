@@ -49,6 +49,8 @@ def polls():
 
 @app.route('/polls/<title>')
 def polls_title(title):
+    if not db.select('poll_table', f"where title = '{title}'", "title"):
+        return not_found(title=title)
     info = {
         'title': title.title(),
     }
@@ -70,7 +72,7 @@ def create_poll():
         if funcs.empty(item):
             msg = f"{item} shouldn't be empty"
         elif item == 'poll-title_1':
-            title = request.form[item]
+            title = request.form[item].strip()
         elif item == 'poll_category':
             category = request.form[item]
         elif item == 'poll_status':
@@ -111,9 +113,11 @@ def create_poll():
 
 # ERROR HANDLING PAGES
 @app.errorhandler(404)
-def not_found(error=''):
+def not_found(error='', title=''):
+    if not title:
+        title = "error 404 | page not found"
     info = {
-        'title': error.title(),
+        'title': title.title(),
     }
     return render_template('404.html', pg=info)
 
