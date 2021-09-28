@@ -33,7 +33,6 @@ class dbfunctions:
         try:
             result = cursor.execute(sql)
             msg = result.fetchall()
-            print(sql)
             db.close()
         except Exception as err:
             print("SQL CODE: ", sql)

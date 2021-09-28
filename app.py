@@ -51,10 +51,18 @@ def polls():
 def polls_title(title):
     if not db.select('poll_table', f"where title = '{title}'", "title"):
         return not_found(title=title)
-    info = {
-        'title': title.title(),
-    }
-    return render_template('single-poll.html', pg=info)
+    else:
+        try:
+            file = open(f"static/files/{title}.km", 'r')
+            file = funcs.json_to_python(file)
+            print(file)
+            info = {
+                'title': title.title(),
+            }
+            return render_template('single-poll.html', pg=info)
+        except Exception as err:
+            print(str(err))
+            return not_found(text="File for the question not found. Contact Admin!")
 
 
 
@@ -113,11 +121,14 @@ def create_poll():
 
 # ERROR HANDLING PAGES
 @app.errorhandler(404)
-def not_found(error='', title=''):
+def not_found(error='', title='', text=''):
     if not title:
         title = "error 404 | page not found"
+    if not text:
+        text = "Sorry that page cannot be found!"
     info = {
         'title': title.title(),
+        'text': text
     }
     return render_template('404.html', pg=info)
 
