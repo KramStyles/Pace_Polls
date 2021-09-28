@@ -24,23 +24,35 @@ def hello_poll():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    info = {
+        'title': 'Sign In',
+    }
+    return render_template('login.html', pg=info)
 
 
 @app.route('/results')
 def results():
-    return render_template('results.html')
+    info = {
+        'title': 'Results',
+    }
+    return render_template('results.html', pg=info)
 
 
 @app.route('/polls')
 def polls():
     polls = db.select('poll_table')
-    return render_template('polls.html', polls=polls)
+    info = {
+        'title': 'All Polls',
+    }
+    return render_template('polls.html', polls=polls, pg=info)
 
 
 @app.route('/polls/<title>')
 def polls_title(title):
-    return render_template('single-poll.html')
+    info = {
+        'title': title,
+    }
+    return render_template('single-poll.html', pg=info)
 
 
 ##########################################
