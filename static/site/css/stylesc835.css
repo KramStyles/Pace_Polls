@@ -3804,6 +3804,13 @@ p.badge.badge_dullindigo, p.poll-tag.badge_dullindigo {
   padding: 20px 0px;
 }
 
+.poll-heading h2 {
+  font-size: 25px;
+  color: #333333;
+  line-height: 25px;
+  font-family: raleway;
+}
+
 .poll-heading h1.sml {
   font-size: 36px;
   line-height: 45px;
@@ -4058,9 +4065,9 @@ a.user-profile-dropdown-link {
   float: left;
   width: 100%;
   padding: 23px 27px 22px 27px;
-  font-size: 28px;
+  font-size: 24px;
   color: #333333;
-  font-weight: 700;
+  font-weight: 500;
   border: 2.5px solid #FFF;
   line-height: 32px;
 }
@@ -13496,9 +13503,9 @@ a.delete-stored-data-link:hover {
 	.poll-wrapper .poll-form .poll-item [type="checkbox"]:checked + label,
 	.poll-wrapper .poll-form .poll-item [type="checkbox"]:not(:checked) + label {
 	  padding: 17px 30px 18px 30px;
-	  font-size: 22px;
-	  font-weight: 600;
-	  line-height: 28px;
+	  font-size: 20px;
+	  font-weight: 400;
+	  line-height: 25px;
 	}
 
 	.poll-wrapper .poll-form .poll-item [type="radio"]:checked + label:before,

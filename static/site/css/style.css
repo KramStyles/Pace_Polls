@@ -40,3 +40,10 @@
 #input-count{
     display: none;
 }
+.raleway{
+    font-family: Raleway !important;
+}
+
+.poppins{
+    font-family: poppins !important;
+}

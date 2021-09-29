@@ -9,7 +9,10 @@ db = dbfunctions()
 
 @app.context_processor
 def showall():
-    return dict(baseurl=BASE_URL)
+    pg_vars = {
+        'c_color': category_color,
+    }
+    return dict(baseurl=BASE_URL, pg_vars=pg_vars)
 
 
 @app.route('/')
@@ -65,8 +68,6 @@ def polls_title(title):
             return not_found(text="File for the question not found. Contact Admin!")
 
 
-
-
 ##########################################
 @app.route('/create_poll', methods=['POST'])
 def create_poll():
@@ -120,6 +121,7 @@ def create_poll():
         print(err)
     return msg
 
+
 # ERROR HANDLING PAGES
 @app.errorhandler(404)
 def not_found(error='', title='', text=''):
@@ -132,6 +134,12 @@ def not_found(error='', title='', text=''):
         'text': text
     }
     return render_template('404.html', pg=info)
+
+
+# PAGE FUNCTIONS
+def category_color(category):
+    msg = db.select('category_table', f"where name = '{category}'", 'colour')
+    return msg[0][0]
 
 
 if __name__ == '__main__':

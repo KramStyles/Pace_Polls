@@ -23,7 +23,7 @@
             </div>
             <div class="poll-wrapper questions-wrapper">
                 <div class="poll-heading">
-                    <p class="poll-tag mobile-development">Mobile Development</p>
+                    <p class="poll-tag badge_{{ pg_vars['c_color'](pg['questions']['category']) }}">{{ pg['questions']['category'] }} </p>
                     <h1 class="standard">{{ pg['questions']['title'] }}</h1>
 
 
@@ -50,7 +50,24 @@
                     </div>
                 </div>
                 <div class="poll-form">
-                    <form action="https://fast-poll.com/poll/996f0ad9" method="post" name="form" target="_self" id="poll-form" novalidate="novalidate">
+
+
+                    <form action="" method="post" name="form" target="_self" id="poll-form" novalidate="novalidate">
+                        {% for text in pg['questions']['text'] %}
+                            <div class="poll-heading">
+                                <h2 class="raleway">{{ text }}</h2>
+                            </div>
+                            {% for opt in pg['questions']['text'][text] %}
+                                <div class="poll-item">
+                                    <input type="radio" id="item_{{ opt[0] }}" value="{{ opt[0] }}" name="{{ text }}" required="">
+                                    <label for="item_{{ opt[0] }}">
+                                        <p class="vote-inner-label poppins"> {{ opt[0] }} </p>
+                                    </label>
+                                </div>
+                            {% endfor %}
+
+                        {% endfor %}
+
                         <div class="poll-item">
                             <input type="radio" id="item_one_997a3296-1f8f-11ec-9375-020055" value="997a3296-1f8f-11ec-9375-020055(1)" name="item[]" required="">
                             <label for="item_one_997a3296-1f8f-11ec-9375-020055">
@@ -69,7 +86,7 @@
                         <div id="poll-error"></div>
                         <div class="poll-footer">
                             <button title="Submit your vote">Submit your vote</button>
-                            <a href="https://fast-poll.com/poll/results/996f0ad9" class="poll-results-button" title="Jump to results">Jump to results</a>
+{#                            <a href="https://fast-poll.com/poll/results/996f0ad9" class="poll-results-button" title="Jump to results">Jump to results</a>#}
                         </div>
                     </form>
                 </div>
