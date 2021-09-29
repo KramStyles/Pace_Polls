@@ -30,18 +30,18 @@
                     <div class="item-inline-wrapper">
                         <div class="item-share-inline-wrapper">
                             <div class="item-dropdown-wrapper">
-                                <a href="#" class="item-link-share-inline" title="Share">Share</a>
+                                <a href="#" class="item-link-share-inline" title="Share">Click to Share</a>
                                 <div class="item-dropdown animated-dropdown bounceIn social-share-links inline ">
                                     <div class="item-dropdown-links-wrapper">
                                         <div class="item-dropdown-inner">
-                                            <a href="https://twitter.com/intent/tweet/?text=Do you know flutter ?%20Vote%20now%20at%20&amp;url=https://fast-poll.com/poll/996f0ad9" target="_blank"
+                                            <a href="https://twitter.com/intent/tweet/?text={{ pg['questions']['title'] }}?%20Vote%20now%20at%20&amp;url={{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank"
                                                class="twitter-dropdown-link" title="Share on Twitter">Share on Twitter</a>
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://fast-poll.com/poll/996f0ad9" target="_blank" class="fb-dropdown-link"
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank" class="fb-dropdown-link"
                                                title="Share on Facebook">Share on Facebook</a>
-                                            <a href="https://api.whatsapp.com/send?text=Do you know flutter ?%20-%20Vote%20now%20at%20https://fast-poll.com/poll/996f0ad9" target="_blank"
+                                            <a href="https://api.whatsapp.com/send?text={{ pg['questions']['title'] }} ?%20-%20Vote%20now%20at%20{{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank"
                                                class="whatsapp-dropdown-link" title="Share on WhatsApp">Share on WhatsApp</a>
-                                            <a href="#" data-reveal-id="copy-url-modal" class="url-dropdown-link" title="Share Link">Share Link</a>
-                                            <a href="#" data-reveal-id="qr-code-modal" class="qr-code-dropdown-link" title="Share QR Code">Share QR Code</a>
+{#                                            <a href="#" data-reveal-id="copy-url-modal" class="url-dropdown-link" title="Share Link">Share Link</a>#}
+{#                                            <a href="#" data-reveal-id="qr-code-modal" class="qr-code-dropdown-link" title="Share QR Code">Share QR Code</a>#}
                                         </div>
                                     </div>
                                 </div>
@@ -67,21 +67,6 @@
                             {% endfor %}
 
                         {% endfor %}
-
-                        <div class="poll-item">
-                            <input type="radio" id="item_one_997a3296-1f8f-11ec-9375-020055" value="997a3296-1f8f-11ec-9375-020055(1)" name="item[]" required="">
-                            <label for="item_one_997a3296-1f8f-11ec-9375-020055">
-                                <p class="vote-inner-label">
-                                    Yes </p>
-                            </label>
-                        </div>
-                        <div class="poll-item">
-                            <input type="radio" id="item_one_997a52fd-1f8f-11ec-9375-020055" value="997a52fd-1f8f-11ec-9375-020055(2)" name="item[]" required="">
-                            <label for="item_one_997a52fd-1f8f-11ec-9375-020055">
-                                <p class="vote-inner-label">
-                                    No </p>
-                            </label>
-                        </div>
                         <input type="text" name="poll_parent_id" id="poll_parent_id" value="996f0ad9" style="display:none;" readonly="">
                         <div id="poll-error"></div>
                         <div class="poll-footer">

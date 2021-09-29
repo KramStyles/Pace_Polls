@@ -174,6 +174,11 @@ $(document).ready(function () {
 
 });
 
+$(".item-link-share-inline").click(function (e) {
+    e.preventDefault();
+    $(".item-dropdown.animated-dropdown.bounceIn.social-share-links.inline").toggle();
+});
+
 function myAjax(element, sentform, url, loc = '', refresh = 0, mod = false) {
     $(element).click(function (e) {
         e.preventDefault();
