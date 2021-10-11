@@ -59,9 +59,9 @@
                             </div>
                             {% for opt in pg['questions']['text'][text] %}
                                 <div class="poll-item">
-                                    <input type="radio" id="item_{{ opt[0] }}" value="{{ opt[0] }}" name="{{ text }}" required="">
-                                    <label for="item_{{ opt[0] }}">
-                                        <p class="vote-inner-label poppins"> {{ opt[0] }} </p>
+                                    <input type="radio" id="item_{{ pg_vars['replace'](' ', '_', opt[0]) }}" value="{{ opt[0] }}" name="{{ text }}" required="">
+                                    <label for="item_{{ pg_vars['replace'](' ', '_', opt[0]) }}">
+                                        <p class="vote-inner-label poppins"> {{ opt[0] | title}} </p>
                                     </label>
                                 </div>
                             {% endfor %}

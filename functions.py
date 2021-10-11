@@ -228,6 +228,10 @@ class functions:
         filters = filter(lambda x: x in whiteList, input)
         return filters
 
+    def replacer(self, replacer, replacee, sentence):
+        sentence = sentence.strip()
+        return sentence.replace(replacer, replacee)
+
     def htmlEn(self, input):
         if "<" in input or ">" in input:
             message = input.replace("<", "&lt;")
