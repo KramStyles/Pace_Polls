@@ -185,7 +185,6 @@ $('#btn-vote').click(function (e) {
         for (elem in section[i].children){
             if (section[i].children[elem].className === 'poll-item' && section[i].children[elem].children[0].checked){
                 currentSec = 1;
-                console.log(section[i].children[elem].children[0]);
             }
         }
         if (currentSec === 0){
@@ -193,6 +192,13 @@ $('#btn-vote').click(function (e) {
         } else{
             section[i].children[1].style.display = 'none';
         }
+
+        if(section[i].children[1].style.display == 'block'){
+            allClear = false;
+        }
+    }
+    if(allClear){
+        console.log('now to send vote');
     }
 
 });
