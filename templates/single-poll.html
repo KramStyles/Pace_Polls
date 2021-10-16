@@ -34,14 +34,16 @@
                                 <div class="item-dropdown animated-dropdown bounceIn social-share-links inline ">
                                     <div class="item-dropdown-links-wrapper">
                                         <div class="item-dropdown-inner">
-                                            <a href="https://twitter.com/intent/tweet/?text={{ pg['questions']['title'] }}?%20Vote%20now%20at%20&amp;url={{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank"
+                                            <a href="https://twitter.com/intent/tweet/?text={{ pg['questions']['title'] }}?%20Vote%20now%20at%20&amp;url={{ baseurl }}polls/{{ pg['questions']['title'] }}"
+                                               target="_blank"
                                                class="twitter-dropdown-link" title="Share on Twitter">Share on Twitter</a>
                                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank" class="fb-dropdown-link"
                                                title="Share on Facebook">Share on Facebook</a>
-                                            <a href="https://api.whatsapp.com/send?text={{ pg['questions']['title'] }} ?%20-%20Vote%20now%20at%20{{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank"
+                                            <a href="https://api.whatsapp.com/send?text={{ pg['questions']['title'] }} ?%20-%20Vote%20now%20at%20{{ baseurl }}polls/{{ pg['questions']['title'] }}"
+                                               target="_blank"
                                                class="whatsapp-dropdown-link" title="Share on WhatsApp">Share on WhatsApp</a>
-{#                                            <a href="#" data-reveal-id="copy-url-modal" class="url-dropdown-link" title="Share Link">Share Link</a>#}
-{#                                            <a href="#" data-reveal-id="qr-code-modal" class="qr-code-dropdown-link" title="Share QR Code">Share QR Code</a>#}
+                                            {#                                            <a href="#" data-reveal-id="copy-url-modal" class="url-dropdown-link" title="Share Link">Share Link</a>#}
+                                            {#                                            <a href="#" data-reveal-id="qr-code-modal" class="qr-code-dropdown-link" title="Share QR Code">Share QR Code</a>#}
                                         </div>
                                     </div>
                                 </div>
@@ -52,26 +54,30 @@
                 <div class="poll-form">
 
 
-                    <form action="" method="post" name="form" target="_self" id="poll-form" novalidate="novalidate">
+                    <form action="" method="post" name="form" target="_self" id="vote-poll-form" novalidate="novalidate">
                         {% for text in pg['questions']['text'] %}
-                            <div class="poll-heading">
-                                <h2 class="raleway">{{ text }}</h2>
-                            </div>
-                            {% for opt in pg['questions']['text'][text] %}
-                                <div class="poll-item">
-                                    <input type="radio" id="item_{{ pg_vars['replace'](' ', '_', opt[0]) }}" value="{{ opt[0] }}" name="{{ text }}" required="">
-                                    <label for="item_{{ pg_vars['replace'](' ', '_', opt[0]) }}">
-                                        <p class="vote-inner-label poppins"> {{ opt[0] | title}} </p>
-                                    </label>
+                            <div class="poll-section">
+                                <div class="poll-heading">
+                                    <h2 class="raleway">{{ text }}</h2>
                                 </div>
-                            {% endfor %}
-
+                                <div class="my-poll-error">
+                                    <p>This field is required!</p>
+                                </div>
+                                {% for opt in pg['questions']['text'][text] %}
+                                    <div class="poll-item">
+                                        <input type="radio" id="item_{{ pg_vars['replace'](' ', '_', opt[0]) }}" value="{{ opt[0] }}" name="{{ text }}" required="">
+                                        <label for="item_{{ pg_vars['replace'](' ', '_', opt[0]) }}">
+                                            <p class="vote-inner-label poppins"> {{ opt[0] | title }} </p>
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         {% endfor %}
                         <input type="text" name="poll_parent_id" id="poll_parent_id" value="996f0ad9" style="display:none;" readonly="">
                         <div id="poll-error"></div>
                         <div class="poll-footer">
-                            <button title="Submit your vote">Submit your vote</button>
-{#                            <a href="https://fast-poll.com/poll/results/996f0ad9" class="poll-results-button" title="Jump to results">Jump to results</a>#}
+                            <button title="Submit your vote" id="btn-vote">Submit your vote</button>
+                            {#                            <a href="https://fast-poll.com/poll/results/996f0ad9" class="poll-results-button" title="Jump to results">Jump to results</a>#}
                         </div>
                     </form>
                 </div>

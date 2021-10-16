@@ -164,19 +164,37 @@ $(document).ready(function () {
         var html = "<a href='https://pacesetterfrontier.com/new' class='delete-stored-data-link'>Remove saved poll data</a>";
         $(".poll-secured").after(html);
     }
-
-
     // captcha error
-
-
     $(".upload-image-button a").attr("href", "https://pacesetterfrontier.com");
-
-
 });
 
 $(".item-link-share-inline").click(function (e) {
     e.preventDefault();
     $(".item-dropdown.animated-dropdown.bounceIn.social-share-links.inline").toggle();
+});
+
+var section, kids;
+$('#btn-vote').click(function (e) {
+    e.preventDefault();
+    section = $(this).parent().siblings(".poll-section");
+    kids = section.children(".poll-item").children("input");
+    var allClear = true;
+
+    for (let i = 0; i < section.length; i++) {
+        let currentSec = 0;
+        for (elem in section[i].children){
+            if (section[i].children[elem].className === 'poll-item' && section[i].children[elem].children[0].checked){
+                currentSec = 1;
+                console.log(section[i].children[elem].children[0]);
+            }
+        }
+        if (currentSec === 0){
+            section[i].children[1].style.display = 'block';
+        } else{
+            section[i].children[1].style.display = 'none';
+        }
+    }
+
 });
 
 function myAjax(element, sentform, url, loc = '', refresh = 0, mod = false) {
