@@ -73,10 +73,10 @@
                                 {% endfor %}
                             </div>
                         {% endfor %}
-                        <input type="text" name="poll_parent_id" id="poll_parent_id" value="996f0ad9" style="display:none;" readonly="">
+                        <input type="text" name="poll_parent_id" id="poll_parent_id" value="{{ pg['questions']['title'] }}" style="display:none;" readonly="">
                         <div id="poll-error"></div>
                         <div class="poll-footer">
-                            <button title="Submit your vote" id="btn-vote">Submit your vote</button>
+                            <button title="Submit your vote" id="btn-vote">Submit your vote </button>
                             {#                            <a href="https://fast-poll.com/poll/results/996f0ad9" class="poll-results-button" title="Jump to results">Jump to results</a>#}
                         </div>
                     </form>

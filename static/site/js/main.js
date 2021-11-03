@@ -182,23 +182,25 @@ $('#btn-vote').click(function (e) {
 
     for (let i = 0; i < section.length; i++) {
         let currentSec = 0;
-        for (elem in section[i].children){
-            if (section[i].children[elem].className === 'poll-item' && section[i].children[elem].children[0].checked){
+        for (elem in section[i].children) {
+            if (section[i].children[elem].className === 'poll-item' && section[i].children[elem].children[0].checked) {
                 currentSec = 1;
             }
         }
-        if (currentSec === 0){
+        if (currentSec === 0) {
             section[i].children[1].style.display = 'block';
-        } else{
+        } else {
             section[i].children[1].style.display = 'none';
         }
 
-        if(section[i].children[1].style.display == 'block'){
+        if (section[i].children[1].style.display === 'block') {
             allClear = false;
         }
     }
-    if(allClear){
-        console.log('now to send vote');
+    if (allClear) {
+        justAjax('#btn-vote', '#vote-poll-form', '/cast_votes');
+    } else {
+        bootbox.alert("<p class='text-danger'>All votes are necessary!</p>");
     }
 
 });
@@ -229,5 +231,35 @@ function myAjax(element, sentform, url, loc = '', refresh = 0, mod = false) {
                 }
             }
         })
+    })
+}
+
+function justAjax(element, sentform, url, loc='', refresh=0) {
+    btn = $(element);
+    frm = $(sentform);
+    btnText = btn.html();
+    btn.html('Processing... <i class="bi bi-square spins"></i>');
+    $.ajax({
+        url: url,
+        method: 'POST',
+        data: frm.serialize(),
+        success: function (data) {
+            btn.html(btnText);
+            if (data == 'ok') {
+                bootbox.alert("<p class='text-success'>Successful</p>");
+                if (loc !== '') {
+                    setTimeout(() => {
+                        location.assign(loc)
+                    }, 2000)
+                }
+                if (refresh === 1) {
+                    setTimeout(() => {
+                        window.top.location = window.top.location;
+                    }, 2000)
+                }
+            } else {
+                bootbox.alert("<p class='text-danger'>" + data + "</p>");
+            }
+        }
     })
 }

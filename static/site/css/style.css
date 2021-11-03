@@ -70,5 +70,23 @@
     font-weight: 500;
     border: 3px solid indianred;
     line-height: 32px;
+    margin-bottom: 10px;
     display: none;
+}
+
+.spins{
+    animation: 1s spins linear infinite;
+    display: inline-block;
+}
+
+@keyframes spins {
+    0%{
+
+    }
+    50%{
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: revert;
+    }
 }

@@ -70,6 +70,31 @@ def polls_title(title):
 
 
 ##########################################
+
+@app.route('/cast_votes', methods=['POST'])
+def cast_votes():
+    title = request.form['poll_parent_id']
+    questions = request.form
+    try:
+        file = open(f'static/files/{title}.km', 'r')
+        raw = file.read()
+        db_question = funcs.json_to_python(raw)
+        for each in questions:
+            if each != "poll_parent_id":
+                for x in db_question['text'][each]:
+                    if request.form[each] == x[0]:
+                        x[1] += 1
+
+        file.close()
+        re_file = open(f'static/files/{title}.km', 'w')
+        re_raw = funcs.python_to_json(db_question)
+        re_file.write(re_raw)
+        re_file.close()
+        return funcs.printForm(request.form)
+    except Exception as err:
+        return f"Err msg: {err}"
+
+
 @app.route('/create_poll', methods=['POST'])
 def create_poll():
     title = category = ''
