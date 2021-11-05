@@ -1,3 +1,4 @@
+let justAjaxReturn;
 $(document).ready(function () {
 
     // tooltip
@@ -26,6 +27,8 @@ $(document).ready(function () {
     var colours_list = ["red", "green", "orange", "blue", "yellow", "purple", "turquoise", "pink", "light-blue", "grey", "pale-purple", "bright-pink", "dark-grey", "bright-orange", "dark-blue", "true-purple", "jet-blue", "smashed-pumpkin", "madder-lake", "offset-purple", "fiery-rose", "eggshell", "sonic-silver", "sunset-blue", "rajah", "light-coral", "mustard", "metallic-seaweed", "sea-green", "japanese-violet"];
     tab_count = (count + 1);
 
+
+
     $(document).on('click', '.new-field-button', function (e) {
         e.preventDefault();
         var input_count = $(this).siblings("#input-count");
@@ -53,7 +56,6 @@ $(document).ready(function () {
             input_count.text(input_count_id);
             if (input_count_id == 16) {
                 $(this).hide();
-            debugger;
 
                 console.log($(this).siblings());
                 $(this).siblings(".max-option-notice").show();
@@ -168,10 +170,72 @@ $(document).ready(function () {
     $(".upload-image-button a").attr("href", "https://pacesetterfrontier.com");
 });
 
+
 $(".item-link-share-inline").click(function (e) {
     e.preventDefault();
     $(".item-dropdown.animated-dropdown.bounceIn.social-share-links.inline").toggle();
 });
+
+function myAjax(element, sentform, url, loc = '', refresh = 0, mod = false) {
+    $(element).click(function (e) {
+        e.preventDefault();
+        frm = $(sentform);
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: frm.serialize(),
+            success: function (data) {
+                if (data == 'ok') {
+                    bootbox.alert("<p class='text-success'>Successful</p>");
+                    if (loc !== '') {
+                        setTimeout(() => {
+                            location.assign(loc)
+                        }, 2000)
+                    }
+                    if (refresh === 1) {
+                        setTimeout(() => {
+                            window.top.location = window.top.location;
+                        }, 2000)
+                    }
+                } else {
+                    bootbox.alert("<p class='text-danger'>" + data + "</p>");
+                }
+            }
+        })
+    })
+}
+function justAjax(element, sentform, url, loc='', refresh=0) {
+    btn = $(element);
+    frm = $(sentform);
+    btnText = btn.html();
+    btn.html('Processing... <i class="bi bi-square spins"></i>');
+    $.ajax({
+        url: url,
+        method: 'POST',
+        data: frm.serialize(),
+        success: function (data) {
+            btn.html(btnText);
+            if (data === 'ok') {
+                bootbox.alert("<p class='text-success'>Successful</p>");
+                if (loc !== '') {
+                    setTimeout(() => {
+                        location.assign(loc)
+                    }, 2000);
+                }
+                if (refresh === 1) {
+                    setTimeout(() => {
+                        window.top.location = window.top.location;
+                    }, 2000)
+                }
+                debugger;
+                console.log('reached');
+                justAjaxReturn = 1;
+            } else {
+                bootbox.alert("<p class='text-danger'>" + data + "</p>");
+            }
+        }
+    })
+}
 
 var section, kids;
 $('#btn-vote').click(function (e) {
@@ -205,61 +269,3 @@ $('#btn-vote').click(function (e) {
 
 });
 
-function myAjax(element, sentform, url, loc = '', refresh = 0, mod = false) {
-    $(element).click(function (e) {
-        e.preventDefault();
-        frm = $(sentform);
-        $.ajax({
-            url: url,
-            method: 'POST',
-            data: frm.serialize(),
-            success: function (data) {
-                if (data == 'ok') {
-                    bootbox.alert("<p class='text-success'>Successful</p>");
-                    if (loc !== '') {
-                        setTimeout(() => {
-                            location.assign(loc)
-                        }, 2000)
-                    }
-                    if (refresh === 1) {
-                        setTimeout(() => {
-                            window.top.location = window.top.location;
-                        }, 2000)
-                    }
-                } else {
-                    bootbox.alert("<p class='text-danger'>" + data + "</p>");
-                }
-            }
-        })
-    })
-}
-
-function justAjax(element, sentform, url, loc='', refresh=0) {
-    btn = $(element);
-    frm = $(sentform);
-    btnText = btn.html();
-    btn.html('Processing... <i class="bi bi-square spins"></i>');
-    $.ajax({
-        url: url,
-        method: 'POST',
-        data: frm.serialize(),
-        success: function (data) {
-            btn.html(btnText);
-            if (data == 'ok') {
-                bootbox.alert("<p class='text-success'>Successful</p>");
-                if (loc !== '') {
-                    setTimeout(() => {
-                        location.assign(loc)
-                    }, 2000)
-                }
-                if (refresh === 1) {
-                    setTimeout(() => {
-                        window.top.location = window.top.location;
-                    }, 2000)
-                }
-            } else {
-                bootbox.alert("<p class='text-danger'>" + data + "</p>");
-            }
-        }
-    })
-}

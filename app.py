@@ -34,17 +34,27 @@ def login():
     return render_template('login.html', pg=info)
 
 
-@app.route('/results')
-def results():
-    info = {
-        'title': 'Results',
-    }
-    return render_template('results.html', pg=info)
+@app.route('/results/<title>')
+def results(title):
+    if not db.select('poll_table', f"where title = '{title}'", "title"):
+        return not_found(title=title)
+    else:
+        try:
+            file = open(f"static/files/{title}.km", 'r')
+            file = funcs.json_to_python(file.read())
+            info = {
+                'title': title.title(),
+                'questions': file
+            }
+            return render_template('results.html', pg=info)
+        except Exception as err:
+            print(str(err))
+            return not_found(text="Result error occurred. Contact Admin!")
 
 
 @app.route('/polls')
 def polls():
-    polls = db.select('poll_table')
+    polls = db.select('poll_table', "ORDER BY id DESC LIMIT 15")
     info = {
         'title': 'All Polls',
     }
@@ -75,6 +85,7 @@ def polls_title(title):
 def cast_votes():
     title = request.form['poll_parent_id']
     questions = request.form
+    votes = len(questions) - 1
     try:
         file = open(f'static/files/{title}.km', 'r')
         raw = file.read()
@@ -90,7 +101,10 @@ def cast_votes():
         re_raw = funcs.python_to_json(db_question)
         re_file.write(re_raw)
         re_file.close()
-        return funcs.printForm(request.form)
+        db_vote = db.select('poll_table', f"where title = '{title}'", 'votes')[0][0]
+        votes += db_vote
+        db.update('poll_table', f"votes = {votes}", f"where title='{title}'")
+        return 'ok'
     except Exception as err:
         return f"Err msg: {err}"
 

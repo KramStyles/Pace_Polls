@@ -22,41 +22,41 @@
                 {% for poll in polls %}
                     <div class="polls-list animated zoomIn">
                     <div class="item-wrapper">
-                        <a href="{{ baseurl }}polls/{{ poll[1] }}" class="item" title="Team Y">
+                        <a href="{{ baseurl }}polls/{{ poll[1] }}" class="item" title="{{ poll[2] }}">
                             <p class="badge badge_{{ poll[5] }}">{{ poll[2] }}</p>
-                            <h2>{{ poll[2]|title }}</h2>
+                            <h2>{{ poll[1]|title }}</h2>
                             <p class="date">Created
                                 <time class="timeago" datetime="{{ poll[3] }}" title="{{ poll[3] }}">{{ poll[3] }}</time>
                             </p>
                             <div class="votes-count">
-                                <p>0 Vote(s)</p>
+                                <p>{{ poll[4] }} Vote(s)</p>
                             </div>
                         </a>
                     </div>
                 </div>
                 {% endfor %}
 
-                <div class="pagination">
-                    <ul>
-                        <li><a href="#" class="active">1</a></li>
-                        <li><a href="https://fast-poll.com/public/?page=2">2</a></li>
-                        <li><a href="https://fast-poll.com/public/?page=3">3</a></li>
-                        <li><a href="https://fast-poll.com/public/?page=2" class="next-link">
-                            <svg width="10px" height="16px" viewBox="0 0 10 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>
-                                icon-arrow-right</title>
-                                <defs></defs>
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g transform="translate(-490.000000, -1897.000000)" fill="#878787">
-                                        <g transform="translate(274.000000, 237.000000)">
-                                            <path d="M222.8,1674 L213.2,1674 C212.537258,1674 212,1673.46274 212,1672.8 C212,1672.13726 212.537258,1671.6 213.2,1671.6 L221.6,1671.6 L221.6,1663.2 C221.6,1662.53726 222.137258,1662 222.8,1662 C223.462742,1662 224,1662.53726 224,1663.2 L224,1672.8 C224,1673.46274 223.462742,1674 222.8,1674 Z"
-                                                  id="icon-arrow-right" transform="translate(218.000000, 1668.000000) rotate(-45.000000) translate(-218.000000, -1668.000000) "></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a></li>
-                    </ul>
-                </div>
+{#                <div class="pagination">#}
+{#                    <ul>#}
+{#                        <li><a href="#" class="active">1</a></li>#}
+{#                        <li><a href="https://fast-poll.com/public/?page=2">2</a></li>#}
+{#                        <li><a href="https://fast-poll.com/public/?page=3">3</a></li>#}
+{#                        <li><a href="https://fast-poll.com/public/?page=2" class="next-link">#}
+{#                            <svg width="10px" height="16px" viewBox="0 0 10 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>#}
+{#                                icon-arrow-right</title>#}
+{#                                <defs></defs>#}
+{#                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">#}
+{#                                    <g transform="translate(-490.000000, -1897.000000)" fill="#878787">#}
+{#                                        <g transform="translate(274.000000, 237.000000)">#}
+{#                                            <path d="M222.8,1674 L213.2,1674 C212.537258,1674 212,1673.46274 212,1672.8 C212,1672.13726 212.537258,1671.6 213.2,1671.6 L221.6,1671.6 L221.6,1663.2 C221.6,1662.53726 222.137258,1662 222.8,1662 C223.462742,1662 224,1662.53726 224,1663.2 L224,1672.8 C224,1673.46274 223.462742,1674 222.8,1674 Z"#}
+{#                                                  id="icon-arrow-right" transform="translate(218.000000, 1668.000000) rotate(-45.000000) translate(-218.000000, -1668.000000) "></path>#}
+{#                                        </g>#}
+{#                                    </g>#}
+{#                                </g>#}
+{#                            </svg>#}
+{#                        </a></li>#}
+{#                    </ul>#}
+{#                </div>#}
             </div>
         </div>
     </main>

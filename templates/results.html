@@ -1,22 +1,23 @@
 {% extends 'site-layout/layout.html' %}
 {% block content %}
     <main class="poll-main">
+        <pre>{{ pg['questions'] }}</pre>
         <div class="poll-outer-wrapper">
             <div class="inner-wrapper lrg">
                 <div class="poll-top-ad-wrapper">
-                    <a href="https://fast-poll.com/pro" class="go-pro-ad-link" title="Go Pro"><span>Go Pro</span> to remove ads</a>
-                    <div class="poll-top-ad-inner">
+                    <a href="https://pacesetterfrontier.com" class="go-pro-ad-link" title="Visit Us"><span>Visit us</span> for quality news!</a>
+                    <div class="poll-top-ad-inner d-flex align-items-center">
                         <div class="poll-top-ad-image">
-                            <a href="https://www.joinhoney.com/ref/x3qzl3y" target="_blank" class="fp-ad-space" data-ad-id="c794e682-b00a-11eb-917d-020055"
-                               title="Automatically find and apply coupon codes when you shop online!">
-                                <img src="https://fastpoll-assets.s3.us-east-2.amazonaws.com/ad/6096a1fb61d9e_ad.jpg" alt="Honey">
+                            <a href="https://pacesetterfrontier.com" target="_blank" class="fp-ad-space"
+                               title="We are a leading electronic and print media magazine committed to making a stride in time; we care about quality content. ">
+                                <img src="/static/favicon.png" alt="Pacesetter Logo">
                             </a>
                         </div>
                         <div class="poll-top-ad-copy">
-                            <p>
-                                <a href="https://www.joinhoney.com/ref/x3qzl3y" target="_blank" class="fp-ad-space" data-ad-id="c794e682-b00a-11eb-917d-020055"
+                            <p class="text-justify">
+                                <a href="https://pacesetterfrontier.com" target="_blank" class="fp-ad-space"
                                    title="Automatically find and apply coupon codes when you shop online!">
-                                    Automatically find and apply coupon codes when you shop online! </a>
+                                    We are a leading electronic and print media magazine committed to making a stride in time; we care about quality content. </a>
                             </p>
                         </div>
                     </div>
@@ -24,22 +25,9 @@
                 <div class="poll-head">
                     <div class="poll-wrapper">
                         <div class="poll-heading">
-                            <p class="poll-tag mobile-development">Mobile Development</p>
-                            <h1 class="standard">Do you know flutter ?</h1>
-                            <div class="author-date">
+                            <p class="poll-tag mobile-development">{{ pg['questions']['category'] }}</p>
+                            <h1 class="standard">{{ pg['questions']['title'] }}</h1>
 
-                                Asked by
-                                <div class="user-profile-info-wrapper">
-                                    <a href="https://fast-poll.com/udit146" class="user-profile-dropdown-link">
-                                        Udit Singh </a>
-
-                                    <div class="user-profile-dropdown-outer">
-                                        <div class="user-profile-dropdown-wrapper animated-dropdown bounceIn">
-                                        </div>
-                                    </div>
-                                </div>
-                                <time class="timeago" datetime="2021-09-27T12:36:55+0000" title="27th September 2021">about 3 hours ago</time>
-                            </div>
                             <div class="item-inline-wrapper">
                                 <div class="item-share-inline-wrapper">
                                     <div class="item-dropdown-wrapper">
@@ -47,14 +35,13 @@
                                         <div class="item-dropdown animated-dropdown bounceIn social-share-links inline ">
                                             <div class="item-dropdown-links-wrapper">
                                                 <div class="item-dropdown-inner">
-                                                    <a href="https://twitter.com/intent/tweet/?text=Do you know flutter ?%20Vote%20now%20at%20&amp;url=https://fast-poll.com/poll/996f0ad9"
+                                                    <a href="https://twitter.com/intent/tweet/?text={{ pg['questions']['title'] }}%20Vote%20now%20at%20&amp;url={{ baseurl }}polls/{{ pg['questions']['title'] }}"
                                                        target="_blank" class="twitter-dropdown-link" title="Share on Twitter">Share on Twitter</a>
-                                                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://fast-poll.com/poll/996f0ad9" target="_blank" class="fb-dropdown-link"
+                                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{baseurl}}polls/{{ pg['questions']['title'] }}" target="_blank" class="fb-dropdown-link"
                                                        title="Share on Facebook">Share on Facebook</a>
-                                                    <a href="https://api.whatsapp.com/send?text=Do you know flutter ?%20-%20Vote%20now%20at%20https://fast-poll.com/poll/996f0ad9" target="_blank"
+                                                    <a href="https://api.whatsapp.com/send?text={{ pg['questions']['title'] }}%20-%20Vote%20now%20at%20{{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank"
                                                        class="whatsapp-dropdown-link" title="Share on WhatsApp">Share on WhatsApp</a>
-                                                    <a href="#" data-reveal-id="copy-url-modal" class="url-dropdown-link" title="Share Link">Share Link</a>
-                                                    <a href="#" data-reveal-id="qr-code-modal" class="qr-code-dropdown-link" title="Share QR Code">Share QR Code</a>
+                                                    <a href="{{ baseurl }}polls/{{ pg['questions']['title'] }}" data-reveal-id="copy-url-modal" class="url-dropdown-link" title="Share Link">Share Link</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,25 +127,22 @@
 
                                         <ul>
                                             <li>
-                                                <a href="https://twitter.com/intent/tweet/?text=Do you know flutter ?%20Vote%20now%20at%20&amp;url=https://fast-poll.com/poll/results/996f0ad9"
+                                                <a href="https://twitter.com/intent/tweet/?text={{ pg['questions']['title'] }}%20Vote%20now%20at%20&amp;url={{ baseurl }}polls/{{ pg['questions']['title'] }}"
                                                    target="_blank" class="share-link twitter" title="Share on Twitter">Share on Twitter</a>
                                             </li>
 
                                             <li>
-                                                <a href="https://www.facebook.com/sharer/sharer.php?u=https://fast-poll.com/poll/results/996f0ad9" target="_blank" class="share-link facebook"
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank" class="share-link facebook"
                                                    title="Share on Facebook">Share on Facebook</a>
                                             </li>
 
                                             <li>
-                                                <a href="https://api.whatsapp.com/send?text=Do you know flutter ?%20-%20Vote%20now%20at%20https://fast-poll.com/poll/results/996f0ad9" target="_blank"
+                                                <a href="https://api.whatsapp.com/send?text={{ pg['questions']['title'] }}%20-%20Vote%20now%20at%20{{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank"
                                                    class="share-link whatsapp" title="Share on WhatsApp">Share on WhatsApp</a>
                                             </li>
 
                                             <li>
-                                                <a href="#" data-reveal-id="copy-url-modal" class="share-link link" title="Share Link">Share Link</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="share-link qr-code" data-reveal-id="qr-code-modal" title="Share QR Code">Share QR Code</a>
+                                                <a href="{{ baseurl }}polls/{{ pg['questions']['title'] }}" data-reveal-id="copy-url-modal" class="share-link link" title="Share Link">Share Link</a>
                                             </li>
 
                                         </ul>

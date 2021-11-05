@@ -48,6 +48,9 @@
     display: none;
 }
 
+.my-hide{
+    display: none !important;
+}
 .raleway {
     font-family: Raleway !important;
 }

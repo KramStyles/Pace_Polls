@@ -5,6 +5,7 @@
         <div class="inner-wrapper x-sml">
             <div class="poll-top-ad-wrapper">
                 <a href="https://pacesetterfrontier.com" class="go-pro-ad-link" title="Visit Us"><span>Visit us</span> for quality news!</a>
+
                 <div class="poll-top-ad-inner d-flex align-items-center">
                     <div class="poll-top-ad-image">
                         <a href="https://pacesetterfrontier.com" target="_blank" class="fp-ad-space"
@@ -77,7 +78,7 @@
                         <div id="poll-error"></div>
                         <div class="poll-footer">
                             <button title="Submit your vote" id="btn-vote">Submit your vote </button>
-                            {#                            <a href="https://fast-poll.com/poll/results/996f0ad9" class="poll-results-button" title="Jump to results">Jump to results</a>#}
+                            <a href="{{ baseurl }}results/{{ pg['questions']['title'] }}" class="poll-results-button my-hide" title="Jump to results">Jump to results</a>
                         </div>
                     </form>
                 </div>
