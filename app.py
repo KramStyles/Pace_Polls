@@ -40,11 +40,27 @@ def results(title):
         return not_found(title=title)
     else:
         try:
+            def votePerc(vote, total, decimal=0):
+                if decimal != 0:
+                    percent = round((vote / total) * 100, decimal)
+                else:
+                    percent = round((vote/total)*100)
+
+                return percent
             file = open(f"static/files/{title}.km", 'r')
             file = funcs.json_to_python(file.read())
+            total_votes = []
+            for name in file['text']:
+                votes = []
+                for vote in file['text'][name]:
+                    votes.append(vote[1])
+                total_votes.append(sum(votes))
             info = {
                 'title': title.title(),
-                'questions': file
+                'questions': file,
+                'total_votes': total_votes,
+                'votePerc': votePerc,
+                'main_total': sum(total_votes)
             }
             return render_template('results.html', pg=info)
         except Exception as err:

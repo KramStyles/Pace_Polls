@@ -1,7 +1,6 @@
 {% extends 'site-layout/layout.html' %}
 {% block content %}
     <main class="poll-main">
-        <pre>{{ pg['questions'] }}</pre>
         <div class="poll-outer-wrapper">
             <div class="inner-wrapper lrg">
                 <div class="poll-top-ad-wrapper">
@@ -51,61 +50,50 @@
                         </div>
                     </div>
                 </div>
-                <div class="poll-wrapper">
-                    <div class="poll-results" style="position: relative; height: 347.2px;">
-                        <div class="poll-item my-border-blue mix most-voted"  style="position: absolute; left: 0px; top: 0px;">
-                            <div class="poll-results-heading">
-                                <h2 class="name">Yes</h2>
-                                <p class="percent">50%
-                                </p>
-                            </div>
-                            <div class="poll-results-bar">
-                                <div class="poll-bar" style="width:50%;"></div>
-                            </div>
-                            <div class="poll-votes-number" data-votes="1">
-                                <p>
-                                    <span class="votes" id="inline-vote-997a3296-1f8f-11ec-9375-020055">1</span>
-                                    Votes
-                                </p>
-                                <span class="count" style="display:none">1</span>
-                                <span class="order" style="display:none">1</span>
-                            </div>
-                        </div>
-                        <div class="poll-item green mix most-voted" data-id="997a52fd-1f8f-11ec-9375-020055" data-order="1" style="position: absolute; left: 0px; top: 173.6px;">
-                            <div class="poll-results-heading">
-                                <h2 class="name">No</h2>
-                                <p class="percent">50%
-                                </p>
-                            </div>
-                            <div class="poll-results-bar">
-                                <div class="poll-bar" style="width:50%;"></div>
-                            </div>
-                            <div class="poll-votes-number" data-votes="1">
-                                <p>
-                                    <span class="votes" id="inline-vote-997a52fd-1f8f-11ec-9375-020055">1</span>
-                                    Votes
-                                </p>
-                                <span class="count" style="display:none">2</span>
-                                <span class="order" style="display:none">1</span>
+                {% set total_votes = pg['total_votes'] %}
+                {% for foo in pg['questions']['text'] %}
+                    {% set current_vote = total_votes[loop.index0] %}
+                    <div class="poll-wrapper">
+                    <h3 style="font-size: 1.6em; padding: 15px 0; font-variant: small-caps" class="raleway">{{ foo|title }}</h3>
+                        {% for answers in pg['questions']['text'][foo] %}
+                            <div class="poll-results">
+                            <div class="poll-item my-border-{{ answers[2] }}">
+                                <div class="poll-results-heading">
+                                    <h2 class="name poppins" style="font-weight: 500">{{ answers[0]|title }}</h2>
+                                    <p class="percent">{{ pg['votePerc'](answers[1], current_vote, 2) }}%
+                                    </p>
+                                </div>
+                                <div class="poll-results-bar">
+                                    <div class="poll-bar" style="width:{{ pg['votePerc'](answers[1], current_vote, 2) }}%; background: {{ answers[2] }}"></div>
+                                </div>
+                                <div class="poll-votes-number" data-votes="1">
+                                    <p>
+                                        <span class="votes" id="inline-vote-997a52fd-1f8f-11ec-9375-020055">{{ answers[1] }}</span>
+                                        Vote(s)
+                                    </p>
+                                    <span class="count" style="display:none">2</span>
+                                    <span class="order" style="display:none">1</span>
+                                </div>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
-                </div>
+                {% endfor %}
+
                 <div class="poll-right-outer">
                     <div class="poll-right-ad-wrapper">
-                        <a href="https://fast-poll.com/pro" class="go-pro-ad-link" title="Go Pro"><span>Go Pro</span> to remove ads</a>
                         <div class="poll-right-ad-inner">
                             <div class="poll-right-ad-image">
-                                <a href="https://www.joinhoney.com/ref/x3qzl3y" target="_blank" class="fp-ad-space" data-ad-id="c794e682-b00a-11eb-917d-020055"
-                                   title="Automatically find and apply coupon codes when you shop online!">
-                                    <img src="https://fastpoll-assets.s3.us-east-2.amazonaws.com/ad/6096a1fb61d9e_ad.jpg" alt="Honey">
+                                <a href="https://pacesetterfrontier.com" target="_blank" class="fp-ad-space"
+                                   title="THE PACESETTER FRONTIER">
+                                    <img src="/static/favicon.png" alt="The Pacesetter Frontier logo">
                                 </a>
                             </div>
                             <div class="poll-right-ad-copy">
                                 <p>
-                                    <a href="https://www.joinhoney.com/ref/x3qzl3y" target="_blank" class="fp-ad-space" data-ad-id="c794e682-b00a-11eb-917d-020055"
-                                       title="Automatically find and apply coupon codes when you shop online!">
-                                        Automatically find and apply coupon codes when you shop online! </a>
+                                    <a href="https://pacesetterfrontier.com" target="_blank" class="fp-ad-space poppins" style="text-align: justify"
+                                       title="We are a leading electronic and print media magazine committed to making a stride in time; we care about quality content. ">
+                                        We are a leading electronic and print media magazine committed to making a stride in time.</a>
                                 </p>
                             </div>
 
@@ -115,12 +103,12 @@
                         <div id="sticky-wrapper" class="sticky-wrapper" style="height: 525px;">
                             <div class="poll-right-column-stick">
                                 <div class="poll-submit-button">
-                                    <a href="https://fast-poll.com/poll/996f0ad9" title="Submit your vote">Submit your vote</a>
+                                    <a href="{{ baseurl }}polls/{{ pg['questions']['title'] }}" title="Submit your vote">Submit your vote</a>
                                 </div>
                                 <div class="poll-right-column-inner">
                                     <div class="poll-votes-count">
                                         <p class="votes-title">Votes</p>
-                                        <p class="votes-number" id="votes-number-count">2</p>
+                                        <p class="votes-number" id="votes-number-count">{{ pg['main_total'] }}</p>
                                     </div>
                                     <div class="poll-share">
                                         <p class="share-title">Share</p>
