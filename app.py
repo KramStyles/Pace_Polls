@@ -44,9 +44,10 @@ def results(title):
                 if decimal != 0:
                     percent = round((vote / total) * 100, decimal)
                 else:
-                    percent = round((vote/total)*100)
+                    percent = round((vote / total) * 100)
 
                 return percent
+
             file = open(f"static/files/{title}.km", 'r')
             file = funcs.json_to_python(file.read())
             total_votes = []
@@ -94,6 +95,14 @@ def polls_title(title):
             print(str(err))
             return not_found(text="File for the question not found. Contact Admin!")
 
+
+@app.route('/admin/polls')
+def adminPolls():
+    polls = db.select('poll_table', "ORDER BY id DESC LIMIT 15")
+    info = {
+        'title': 'Edit Polls Polls',
+    }
+    return render_template('admin/polls.html', polls=polls, pg=info)
 
 ##########################################
 

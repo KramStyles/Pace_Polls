@@ -237,6 +237,8 @@ function justAjax(element, sentform, url, loc='', refresh=0) {
     })
 }
 
+// Todo: Don't forget to add go to result page after voting
+
 var section, kids;
 $('#btn-vote').click(function (e) {
     e.preventDefault();
@@ -269,3 +271,7 @@ $('#btn-vote').click(function (e) {
 
 });
 
+$('#adminSettings').click(function (e) {
+    e.preventDefault();
+    $(".item-dropdown.animated-dropdown.bounceIn").slideToggle();
+});
