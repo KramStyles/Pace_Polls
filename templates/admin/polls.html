@@ -23,11 +23,11 @@
                 {% for poll in polls %}
                     <div class="polls-list animated zoomIn poll-list-options">
                     <div class="item-wrapper">
-                        <a href="{{ baseurl }}polls/{{ poll[1] }}" class="item " title="{{ poll[1] }}">
-                            <p class="badge {{ poll[5] }}">{{ poll[2] }}</p>
+                        <a href="javascript:;" class="item " title="{{ poll[1] }}">
+                            <p class="badge badge_{{ poll[5] }}">{{ poll[2] }}</p>
                             <h2 class="poppins">{{ poll[1] }}</h2>
                             <p class="date">Created
-                                <time class="timeago" datetime="2021-11-06T15:19:27+0000" title="{{ poll[3] }}">{{ poll[3] }}</time>
+                                <time class="timeago" datetime="{{ poll[3] }}" title="{{ poll[3] }}">{{ poll[3] }}</time>
                             </p>
                             <div class="votes-count">
                                 <p>{{ poll[4] }} Vote(s)</p>
@@ -36,15 +36,15 @@
 
                         <div class="item-links-wrapper">
                             <div class="item-dropdown-wrapper">
-                                <a href="#" class="item-link-settings" title="Settings" id="adminSettings">
+                                <a href="#" class="item-link-settings" title="Settings" id="adminSettings" data-id="btnSettings{{ poll[0] }}">
                                     Settings
                                 </a>
-                                <div class="item-dropdown animated-dropdown bounceIn">
+                                <div class="item-dropdown animated-dropdown bounceIn" id="btnSettings{{ poll[0] }}">
                                     <div class="item-dropdown-links-wrapper">
                                         <div class="item-dropdown-inner">
                                             <a href="{{ baseurl }}admin/polls/{{ poll[1] }}">Edit Poll<span class="item-dropdown-badge green">Open</span></a>
                                             <div class="item-dropdown-divide"></div>
-                                            <a href="">Delete Poll <span class="item-dropdown-badge red">Are you sure?</span></a>
+                                            <a href="" id="btnDeletePoll" data-id="{{ poll[0] }}" data-title="{{ poll[1] }}">Delete Poll <span class="item-dropdown-badge red">Are you sure?</span></a>
                                         </div>
                                     </div>
                                 </div>

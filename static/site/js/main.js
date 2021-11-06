@@ -268,10 +268,34 @@ $('#btn-vote').click(function (e) {
     } else {
         bootbox.alert("<p class='text-danger'>All votes are necessary!</p>");
     }
-
 });
 
-$('#adminSettings').click(function (e) {
+$(document).on('click', '#adminSettings', function (e) {
     e.preventDefault();
-    $(".item-dropdown.animated-dropdown.bounceIn").slideToggle();
+    $(this).siblings($(".item-dropdown.animated-dropdown.bounceIn")).slideToggle();
+});
+
+$(document).on('click', '#btnDeletePoll', function (e) {
+    e.preventDefault();
+    let data_id = $(this).attr('data-id');
+    let data_title = $(this).attr('data-title');
+    bootbox.confirm("Are you sure you want to delete this poll ("+data_title+")?", function (result) {
+        if (result){
+            $.ajax({
+                url: '/admin_delete_poll',
+                method: 'POST',
+                data: {data_id: data_id},
+                success: function (data) {
+                    if (data === 'ok'){
+                        bootbox.alert(data_title + " poll has been deleted successfully!");
+                        setTimeout(()=>{
+                            window.top.location = window.top.location;
+                        }, 2000)
+                    } else{
+                        bootbox.alert("<p class='text-danger'>"+data+"</p>");
+                    }
+                }
+            })
+        }
+    })
 });

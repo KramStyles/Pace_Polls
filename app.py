@@ -104,7 +104,15 @@ def adminPolls():
     }
     return render_template('admin/polls.html', polls=polls, pg=info)
 
+
 ##########################################
+
+@app.route('/admin_delete_poll', methods=['POST'])
+def admin_delete_poll():
+    idd = request.form['data_id']
+    msg = db.delete('poll_table', f"where id = {idd}")
+    return msg
+
 
 @app.route('/cast_votes', methods=['POST'])
 def cast_votes():
