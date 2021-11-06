@@ -1,0 +1,82 @@
+{% extends 'site-layout/layout.html' %}
+{% block content %}
+    <main>
+        <div class="inner-wrapper sml">
+            <div class="page-wrapper">
+                <header class="page-header">
+                    <div class="left">
+                        <h1>My Polls</h1>
+                        <p>Below are all the public and private polls you created.</p>
+                    </div>
+                    <div class="right">
+                        <div class="order-dropdown">
+                            <a href="#" class="dropdown-link">Recent</a>
+                            <div class="order-dropdown-menu animated-dropdown bounceIn recent" style="display: none;">
+                                <a href="https://fast-poll.com/my-polls/" class="recent-link">Recent</a>
+                                <a href="https://fast-poll.com/my-polls/?order=popular" class="popular-link">Popular</a>
+                                <a href="https://fast-poll.com/my-polls/?order=public" class="public-link">Public</a>
+                                <a href="https://fast-poll.com/my-polls/?order=private" class="private-link">Private</a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="polls-list animated zoomIn poll-list-options">
+                    <div class="item-wrapper">
+                        <a href="https://fast-poll.com/poll/results/eec2eaab" class="item " title="What do you think should be the legal age?">
+                            <p class="badge random">Random</p>
+                            <h2>What do you think should be the legal age?</h2>
+                            <p class="date">Created
+                                <time class="timeago" datetime="2021-11-06T15:19:27+0000" title="6th November 2021">4 minutes ago</time>
+                            </p>
+                            <div class="votes-count">
+                                <p>0 Votes</p>
+                            </div>
+                        </a>
+
+                        <div class="item-links-wrapper">
+
+
+                            <div class="item-visibility-status">
+                                <a href="https://fast-poll.com/poll/function/poll-public/eec2eaab" class="item-link-visibility private tooltip tooltipstered">Private</a>
+                            </div>
+
+                            <div class="item-dropdown-wrapper">
+                                <a href="#" class="item-link-settings" title="Settings">
+                                    Settings
+                                </a>
+                                <div class="item-dropdown animated-dropdown bounceIn" style="display: none;">
+                                    <div class="item-dropdown-links-wrapper">
+                                        <div class="item-dropdown-inner">
+                                            <a href="https://fast-poll.com/poll/edit/eec2eaab">Edit Poll</a>
+                                            <a href="https://fast-poll.com/poll/function/poll-public/eec2eaab">
+                                                Poll Visability
+                                                <span class="item-dropdown-badge orange">Private</span>
+                                            </a>
+                                            <a href="https://fast-poll.com/poll/function/voting-close/eec2eaab">
+                                                Voting
+                                                <span class="item-dropdown-badge green">Open</span>
+                                            </a>
+                                            <div class="item-dropdown-divide"></div>
+                                            <a href="https://fast-poll.com/poll/function/comments-on/eec2eaab">
+                                                Comments
+                                                <span class="item-dropdown-badge grey">Off</span>
+                                            </a>
+                                            <a href="https://fast-poll.com/poll/function/session-votes-on/eec2eaab">
+                                                Login to Vote
+                                                <span class="item-dropdown-badge grey">Off</span>
+                                            </a>
+                                            <a href="https://fast-poll.com/poll/function/captcha-on/eec2eaab">
+                                                Captcha
+                                                <span class="item-dropdown-badge grey">Off</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
