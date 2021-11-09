@@ -1,0 +1,158 @@
+{% extends 'site-layout/layout.html' %}
+{% block content %}
+    <main>
+
+        <div class="inner-wrapper sml">
+
+            <div class="form-wrapper">
+                <header class="form-header">
+                    <h1>Create a poll</h1>
+                    <p>Complete the below fields to create your poll</p>
+                </header>
+
+                <form action="" method="post" name="form_1" target="_self" id="poll-form">
+
+                    <div class="input-group" data-id='1'>
+                        <label for="poll-title">POLL TITLE</label>
+                        <div class="input-group-field">
+                            <input type="text" name="poll-title_1" id="poll-title" placeholder="Eg. Gala Night Awards" data-msg="This option shouldn't be empty" required/>
+                        </div>
+                    </div>
+
+                    <div class="new-form" id="form_1">
+                        <div class="input-group">
+                            <label for="poll-question">POLL QUESTION 1</label>
+                            <textarea placeholder="Eg. What is your favourite colour" id="poll_question" name="poll_question_1" tabindex="1" data-msg="You need to enter a poll question" autofocus
+                                      required></textarea>
+                        </div>
+                        <div class="poll-options">
+                            <div class="input-group" data-id='1'>
+                                <label for="poll_option_1">Poll option</label>
+                                <div class="input-group-field">
+                                    <input type="text" name="poll_option_1" id="poll_option_1" placeholder="Eg. Option 1" tabindex="2" data-msg="You need to enter a minimum of 2 options" required/>
+                                    <div class="poll-option-group">
+                                        <div class="poll-colour-dropdown-wrapper">
+                                            <a href="#" id="colour-block-button" class="colour-option-button-one red" title="Choose a colour for your poll option">
+                                                <span></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" value="red" class="colour_input" name="colour_1" id="colour_option_1" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <a href="#" class="new-field-button" title="Add another option to your poll">Add another option</a>
+                            <div id="input-count">1</div>
+                            <a href="#" class="remove-field-button" title="Add another option to your poll">Remove last option</a>
+
+                            <p class="max-option-notice">I believe 15 Options are already too much.</p>
+                        </div>
+                        <div class="form-divide"></div>
+                    </div>
+{#                    <div class='new-form'><div class='input-group'><label for='poll-question'>Poll question</label><textarea placeholder='Eg. What is your favourite colour' id='poll_question' name='poll_question_1' tabindex='1' data-msg='You need to enter a poll question' autofocus required></textarea></div><div class='poll-options'><div class='input-group' data-id='1'><label for='poll_option_1'>Poll option</label><div class='input-group-field'><input type='text' name='poll_option_1' id='poll_option_1' placeholder='Eg. Option 1' tabindex='2' data-msg='You need to enter a minimum of 2 options' required/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='colour-option-button-one red' title='Choose a colour for your poll option'><span></span></a></div></div></div><input type='text' value='red' class='colour_input' name='colour_option_1' id='colour_option_1' readonly/></div></div><div class='input-group'><a href='#' class='new-field-button' title='Add another option to your poll'>Add another option</a><a href='#' class='remove-field-button' title='Add another option to your poll'>Remove last option</a><p class='max-option-notice'>I believe 15 Options are already too much.</p></div><div class='form-divide'></div></div>#}
+
+
+                    <div class="input-group split-field-left full-width-select">
+                        <label for="poll_category">Poll category</label>
+                        <select id="poll_category" name="poll_category" data-msg="You need to choose a category for your poll" required>
+                            <option value="" disabled selected>Choose a Category</option>
+
+                            {% for cate in pg['categories'] %}
+                                <option value="{{ cate[1] }}">{{ cate[1]|title }}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                    <div class="input-group split-field-right full-width-select">
+                        <label for="poll_status" class="label-info-icon">Poll visibility</label>
+                        <a href="#" class="poll-status-label-hint" data-reveal-id="poll-status-info" title="What is poll visibility?">What is poll visibility?</a>
+                        <select id="poll_status" name="poll_status" required>
+                            <option value="0">Private</option>
+                            <option value="1" selected>Public</option>
+                        </select>
+                    </div>
+                    <div id="scroll-point" class="poll-create-scroll-point"></div>
+                    <div class="form-divide"></div>
+                    <div id="form-error">
+                    </div>
+                </form>
+                <div class="input-group">
+                    <a href="#" class="add-new-poll" title="Add another poll question">Create New Poll Question</a>
+                </div>
+                <div class="input-group">
+                    <a href="#" class="remove-last-poll" title="Remove the last poll question">Remove Last Poll Question</a>
+                </div>
+                <div class="form-divide"></div>
+                <div class="poll-secured">
+                    Poll secured using cookies to prevent duplicate votes being cast.
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="create-poll-button" title="Create your poll">Create your poll</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="poll-status-info" class="reveal-modal report">
+        <div class="report-modal-copy">
+            <p class="report-title">Poll visibility</p>
+            <p class="report-subtitle">We have two poll visibility options</p>
+            <div class="poll-status-info-block blue">
+                <p class="icon"></p>
+                <p class="title">Private Polls</p>
+                <p class="copy">Poll will be hidden from both your profile, our public feed and will not be indexed/discoverable via search engines. It will only be accessible via the url
+                    provided.</p>
+            </div>
+            <div class="poll-status-info-block green">
+                <p class="icon"></p>
+                <p class="title">Public Polls</p>
+                <p class="copy">Poll will be visible on your profile, in our public poll feed and will be indexed and discoverable via search engines.</p>
+            </div>
+        </div>
+        <a class="close-reveal-modal"></a>
+    </div>
+    <div class="poll-colour-dropdown animated-dropdown bounceIn">
+        <div class="poll-colour-dropdown-copy">
+            <h4>Option Colour</h4>
+            <p>Choose a colour for your poll option, this will be shown on your poll results page.</p>
+        </div>
+        <div class="poll-colour-squares">
+            <a href="#" class="colour-square red" data-colour="red" title="Red"></a>
+            <a href="#" class="colour-square green" data-colour="green" title="Green"></a>
+            <a href="#" class="colour-square orange" data-colour="orange" title="Orange"></a>
+            <a href="#" class="colour-square blue" data-colour="blue" title="Blue"></a>
+            <a href="#" class="colour-square yellow" data-colour="yellow" title="Yellow"></a>
+            <a href="#" class="colour-square purple" data-colour="purple" title="Purple"></a>
+            <a href="#" class="colour-square turquoise" data-colour="turquoise" title="Turquoise"></a>
+            <a href="#" class="colour-square pink" data-colour="pink" title="Pink"></a>
+            <a href="#" class="colour-square light-blue" data-colour="light-blue" title="Light Blue"></a>
+            <a href="#" class="colour-square grey" data-colour="grey" title="Grey"></a>
+            <a href="#" class="colour-square pale-purple" data-colour="pale-purple" title="Pale Purple"></a>
+            <a href="#" class="colour-square bright-pink" data-colour="bright-pink" title="Bright Pink"></a>
+            <a href="#" class="colour-square dark-grey" data-colour="dark-grey" title="Dark Grey"></a>
+            <a href="#" class="colour-square bright-orange" data-colour="bright-orange" title="Bright Orange"></a>
+            <a href="#" class="colour-square dark-blue" data-colour="dark-blue" title="Dark Blue"></a>
+
+            <div class="poll-colour-squares-hidden">
+                <a href="#" class="colour-square true-purple" data-colour="true-purple" title="True Purple"></a>
+                <a href="#" class="colour-square jet-blue" data-colour="jet-blue" title="Jet Blue"></a>
+                <a href="#" class="colour-square smashed-pumpkin" data-colour="smashed-pumpkin" title="Orange Alt"></a>
+                <a href="#" class="colour-square madder-lake" data-colour="madder-lake" title="Red Alt"></a>
+                <a href="#" class="colour-square offset-purple" data-colour="offset-purple" title="Purple Alt"></a>
+                <a href="#" class="colour-square fiery-rose" data-colour="fiery-rose" title="Fiery Red"></a>
+                <a href="#" class="colour-square eggshell" data-colour="eggshell" title="Eggshell"></a>
+                <a href="#" class="colour-square sonic-silver" data-colour="sonic-silver" title="Silver"></a>
+                <a href="#" class="colour-square sunset-blue" data-colour="sunset-blue" title="Sunset Blue"></a>
+                <a href="#" class="colour-square rajah" data-colour="rajah" title="Pale Orange"></a>
+                <a href="#" class="colour-square light-coral" data-colour="light-coral" title="Light Coral"></a>
+                <a href="#" class="colour-square mustard" data-colour="mustard" title="Mustard Yellow"></a>
+                <a href="#" class="colour-square metallic-seaweed" data-colour="metallic-seaweed" title="Green Alt"></a>
+                <a href="#" class="colour-square sea-green" data-colour="sea-green" title="Sea Green"></a>
+                <a href="#" class="colour-square japanese-violet" data-colour="japanese-violet" title="Violet"></a>
+            </div>
+            <a href="#" class="colour-squares-more-button" title="Show more colours">More</a>
+        </div>
+    </div>
+{% endblock %}

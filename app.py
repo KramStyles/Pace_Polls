@@ -96,13 +96,17 @@ def polls_title(title):
             return not_found(text="File for the question not found. Contact Admin!")
 
 
-@app.route('/admin/polls')
-def adminPolls():
-    polls = db.select('poll_table', "ORDER BY id DESC LIMIT 15")
+@app.route('/admin/polls/<title>')
+def adminPolls(title):
+    polls = db.select('poll_table', f"""where title = "{title}" """)
     info = {
         'title': 'Edit Polls Polls',
     }
-    return render_template('admin/polls.html', polls=polls, pg=info)
+    print(polls)
+    return render_template('index.html', pg=info)
+
+
+
 
 
 ##########################################
