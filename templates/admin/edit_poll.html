@@ -10,8 +10,7 @@
                     <p>Edit the poll carefully. </p>
                 </header>
 
-                <form method="post" name="form_1" target="_self" id="poll-form">
-
+                <form method="post" name="form_1" target="_self" id="edit-poll-form">
                     <div class="input-group" data-id='1'>
                         <label for="poll-title">POLL TITLE</label>
                         <div class="input-group-field">
@@ -34,11 +33,12 @@
                                         <input type="text" name="poll_option_{{ loop.index }}" id="poll_option_{{ loop.index }}" placeholder="Eg. Option {{ loop.index }}" tabindex="{{ loop.index }}" data-msg="You need to enter a minimum of 2 options"
                                                required value="{{ item[0]|title }}"/>
                                         <div class="poll-option-group">
-                                            <div class="poll-colour-dropdown-wrapper">
-
+                                            <div class="poll-colour-dropdown-wrapper d-flex align-items-center justify-content-between">
                                                 <a href="#" id="colour-block-button" class="colour-option-button-one {{ item[2] }}" title="Choose a colour for your poll option">
                                                     <span></span>
                                                 </a>
+                                                <span class="poppins badge font-weight-bold" >VOTES: {{ item[1] }}</span>
+                                                <input type="hidden" name="VOTES :: {{ questions }} :: {{ item[0] }}" value="{{ item[1] }}">
                                             </div>
                                         </div>
                                     </div>
@@ -92,11 +92,8 @@
                     <a href="#" class="remove-last-poll" title="Remove the last poll question">Remove Last Poll Question</a>
                 </div>
                 <div class="form-divide"></div>
-                <div class="poll-secured">
-                    Poll secured using cookies to prevent duplicate votes being cast.
-                </div>
                 <div class="input-group">
-                    <button type="submit" class="create-poll-button" title="Create your poll">Create your poll</button>
+                    <button type="submit" class="edit-poll-button" title="Create your poll" id="edit-poll-button">Save Changes</button>
                 </div>
             </div>
         </div>

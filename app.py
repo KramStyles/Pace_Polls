@@ -212,6 +212,11 @@ def create_poll():
     return msg
 
 
+@app.route('/admin_edit_poll', methods=['POST'])
+def admin_edit_poll():
+    return "hello"
+
+
 # ERROR HANDLING PAGES
 @app.errorhandler(404)
 def not_found(error='', title='', text=''):
