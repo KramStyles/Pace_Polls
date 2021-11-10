@@ -96,16 +96,29 @@ def polls_title(title):
             return not_found(text="File for the question not found. Contact Admin!")
 
 
-@app.route('/admin/polls/<title>')
-def adminPolls(title):
-    polls = db.select('poll_table', f"""where title = "{title}" """)
+@app.route('/admin/polls')
+def adminPolls():
+    polls = db.select('poll_table', "ORDER BY id DESC LIMIT 15")
     info = {
-        'title': 'Edit Polls Polls',
+        'title': 'All Polls',
     }
-    print(polls)
-    return render_template('index.html', pg=info)
+    return render_template('admin/polls.html', pg=info, polls=polls)
 
 
+@app.route('/admin/polls/<title>')
+def adminEditPolls(title):
+    if not db.select('poll_table', f"""where title = "{title}" """):
+        return not_found("Incorrect Poll Item")
+    else:
+        categories = db.select('category_table')
+        file = open(f"static/files/{title}.km", 'r')
+        poll = funcs.json_to_python(file.read())
+        info = {
+            'title': f'Edit Polls: {title}',
+            'categories': categories
+
+        }
+    return render_template('admin/edit_poll.html', pg=info, poll=poll)
 
 
 

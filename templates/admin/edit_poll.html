@@ -6,16 +6,16 @@
 
             <div class="form-wrapper">
                 <header class="form-header">
-                    <h1>Create a poll</h1>
-                    <p>Complete the below fields to create your poll</p>
+                    <h1>{{ poll['title'] }}</h1>
+                    <p>Edit the poll carefully. </p>
                 </header>
 
-                <form action="" method="post" name="form_1" target="_self" id="poll-form">
+                <form method="post" name="form_1" target="_self" id="poll-form">
 
                     <div class="input-group" data-id='1'>
                         <label for="poll-title">POLL TITLE</label>
                         <div class="input-group-field">
-                            <input type="text" name="poll-title_1" id="poll-title" placeholder="Eg. Gala Night Awards" data-msg="This option shouldn't be empty" required/>
+                            <input type="text" name="poll-title_1" id="poll-title" placeholder="Eg. Gala Night Awards" value="{{ poll['title'] }}" data-msg="This option shouldn't be empty" required/>
                         </div>
                     </div>
 
@@ -57,10 +57,14 @@
                     <div class="input-group split-field-left full-width-select">
                         <label for="poll_category">Poll category</label>
                         <select id="poll_category" name="poll_category" data-msg="You need to choose a category for your poll" required>
-                            <option value="" disabled selected>Choose a Category</option>
+                            <option value="" disabled>Choose a Category</option>
 
                             {% for cate in pg['categories'] %}
-                                <option value="{{ cate[1] }}">{{ cate[1]|title }}</option>
+                                {% if cate[1]|lower == poll['category'] %}
+                                    <option value="{{ cate[1] }}" selected>{{ cate[1]|title }}</option>
+                                {% else %}
+                                    <option value="{{ cate[1] }}">{{ cate[1]|title }}</option>
+                                {% endif %}
                             {% endfor %}
 
                         </select>
@@ -94,7 +98,6 @@
             </div>
         </div>
     </main>
-
     <div id="poll-status-info" class="reveal-modal report">
         <div class="report-modal-copy">
             <p class="report-title">Poll visibility</p>
