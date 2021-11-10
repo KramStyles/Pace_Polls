@@ -19,40 +19,44 @@
                         </div>
                     </div>
 
-                    <div class="new-form" id="form_1">
-                        <div class="input-group">
-                            <label for="poll-question">POLL QUESTION 1</label>
-                            <textarea placeholder="Eg. What is your favourite colour" id="poll_question" name="poll_question_1" tabindex="1" data-msg="You need to enter a poll question" autofocus
-                                      required></textarea>
-                        </div>
-                        <div class="poll-options">
-                            <div class="input-group" data-id='1'>
-                                <label for="poll_option_1">Poll option</label>
-                                <div class="input-group-field">
-                                    <input type="text" name="poll_option_1" id="poll_option_1" placeholder="Eg. Option 1" tabindex="2" data-msg="You need to enter a minimum of 2 options" required/>
-                                    <div class="poll-option-group">
-                                        <div class="poll-colour-dropdown-wrapper">
-                                            <a href="#" id="colour-block-button" class="colour-option-button-one red" title="Choose a colour for your poll option">
-                                                <span></span>
-                                            </a>
+                    {% for questions in poll['text'] %}
+                        <div class="new-form" id="form_{{ loop.index }}">
+                            <div class="input-group">
+                                <label for="poll-question">POLL QUESTION {{ loop.index }}</label>
+                                <textarea placeholder="Eg. What is your favourite colour" id="poll_question" name="poll_question_1" tabindex="1" data-msg="You need to enter a poll question" autofocus
+                                          required>{{ questions }}</textarea>
+                            </div>
+                            <div class="poll-options">
+                                {% for item in poll['text'][questions] %}
+                                    <div class="input-group" data-id='{{ loop.index }}'>
+                                    <label for="poll_option_1">Poll option</label>
+                                    <div class="input-group-field">
+                                        <input type="text" name="poll_option_{{ loop.index }}" id="poll_option_{{ loop.index }}" placeholder="Eg. Option {{ loop.index }}" tabindex="{{ loop.index }}" data-msg="You need to enter a minimum of 2 options"
+                                               required value="{{ item[0]|title }}"/>
+                                        <div class="poll-option-group">
+                                            <div class="poll-colour-dropdown-wrapper">
+
+                                                <a href="#" id="colour-block-button" class="colour-option-button-one {{ item[2] }}" title="Choose a colour for your poll option">
+                                                    <span></span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
+                                    <input type="text" value="red" class="colour_input" name="colour_1" id="colour_option_1" readonly/>
                                 </div>
-                                <input type="text" value="red" class="colour_input" name="colour_1" id="colour_option_1" readonly/>
+                                {% endfor %}
                             </div>
+
+                            <div class="input-group">
+                                <a href="#" class="new-field-button" title="Add another option to your poll">Add another option</a>
+                                <div id="input-count">1</div>
+                                <a href="#" class="remove-field-button" title="Add another option to your poll">Remove last option</a>
+
+                                <p class="max-option-notice">I believe 15 Options are already too much.</p>
+                            </div>
+                            <div class="form-divide"></div>
                         </div>
-
-                        <div class="input-group">
-                            <a href="#" class="new-field-button" title="Add another option to your poll">Add another option</a>
-                            <div id="input-count">1</div>
-                            <a href="#" class="remove-field-button" title="Add another option to your poll">Remove last option</a>
-
-                            <p class="max-option-notice">I believe 15 Options are already too much.</p>
-                        </div>
-                        <div class="form-divide"></div>
-                    </div>
-{#                    <div class='new-form'><div class='input-group'><label for='poll-question'>Poll question</label><textarea placeholder='Eg. What is your favourite colour' id='poll_question' name='poll_question_1' tabindex='1' data-msg='You need to enter a poll question' autofocus required></textarea></div><div class='poll-options'><div class='input-group' data-id='1'><label for='poll_option_1'>Poll option</label><div class='input-group-field'><input type='text' name='poll_option_1' id='poll_option_1' placeholder='Eg. Option 1' tabindex='2' data-msg='You need to enter a minimum of 2 options' required/><div class='poll-option-group'><div class='poll-colour-dropdown-wrapper'><a href='#' id='colour-block-button' class='colour-option-button-one red' title='Choose a colour for your poll option'><span></span></a></div></div></div><input type='text' value='red' class='colour_input' name='colour_option_1' id='colour_option_1' readonly/></div></div><div class='input-group'><a href='#' class='new-field-button' title='Add another option to your poll'>Add another option</a><a href='#' class='remove-field-button' title='Add another option to your poll'>Remove last option</a><p class='max-option-notice'>I believe 15 Options are already too much.</p></div><div class='form-divide'></div></div>#}
-
+                    {% endfor %}
 
                     <div class="input-group split-field-left full-width-select">
                         <label for="poll_category">Poll category</label>
@@ -66,7 +70,6 @@
                                     <option value="{{ cate[1] }}">{{ cate[1]|title }}</option>
                                 {% endif %}
                             {% endfor %}
-
                         </select>
                     </div>
                     <div class="input-group split-field-right full-width-select">
