@@ -5,7 +5,11 @@
 					<div class="error-message">
 						<div class="inner-wrapper x-sml">
 							<h1>{{ pg['text'] }}</h1>
-							<a href="/polls">View all Polls</a>
+							{% if pg['link'] %}
+							    <a href="{{ pg['link'] }}">{{ pg['link_text'] }}</a>
+                            {% else %}
+                                <a href="/polls">View all Polls</a>
+							{% endif %}
 						</div>
 					</div>
         </section>

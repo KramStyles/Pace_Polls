@@ -2,9 +2,11 @@ from flask import Flask, render_template, request
 from flask_login import login_required, login_user, logout_user, LoginManager, current_user
 from functions import functions, dbfunctions
 from users import User
+from secrets import token_urlsafe
 from config import *
 
 app = Flask(__name__)
+app.secret_key = token_urlsafe(18)
 funcs = functions()
 db = dbfunctions()
 logManager = LoginManager(app)
@@ -41,6 +43,12 @@ def login():
         'title': 'Sign In',
     }
     return render_template('login.html', pg=info)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return login()
 
 
 @app.route('/results/<title>')
