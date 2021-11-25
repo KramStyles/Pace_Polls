@@ -17,6 +17,10 @@ def showall():
 
 
 @app.route('/')
+
+
+
+@app.route('/create')
 def hello_poll():
     categories = db.select('category_table')
     info = {
