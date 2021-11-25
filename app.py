@@ -16,7 +16,6 @@ def showall():
     return dict(baseurl=BASE_URL, pg_vars=pg_vars)
 
 
-@app.route('/')
 
 
 
@@ -218,7 +217,15 @@ def create_poll():
 
 @app.route('/admin_edit_poll', methods=['POST'])
 def admin_edit_poll():
+    # TODO: Work on editing polls
     return "hello"
+
+@app.route('/admin_sign_in', methods=['POST'])
+def admin_sign_in():
+    username = request.form['username']
+    password = request.form['password']
+
+    return funcs.printForm(request.form)
 
 
 # ERROR HANDLING PAGES

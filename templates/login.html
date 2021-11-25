@@ -8,24 +8,24 @@
 
                 <header class="session-form-header">
                     <h1>Login</h1>
-                    <p>Securely login to your Fast Poll account</p>
+                    <p>Securely login using your Admin Details</p>
                 </header>
 
-                <form method="POST" action=" " id="login_form" name="login_form" novalidate="novalidate">
+                <form method="POST" id="login_form" name="login_form" novalidate="novalidate">
 
                     <div class="session-input-group">
-                        <input type="text" name="email" id="email" placeholder="Email Address" data-msg="Please enter your email address" data-rule-minlength="2"
+                        <input type="text" name="username" id=username" placeholder="Admin Username" data-msg="Please enter your email address" data-rule-minlength="2"
                                data-msg-email="Please enter a valid email address" autocomplete="new" autofocus="" required="">
                     </div>
 
                     <div class="session-input-group">
-                        <input type="password" name="password" id="password" placeholder="Password" data-rule-minlength="6" data-rule-maxlength="64"
+                        <input type="password" name="password" id="password" placeholder="Enter Password" data-rule-minlength="6" data-rule-maxlength="64"
                                data-msg-minlength="Password needs to be a minimum of 6 characters" data-msg-maxlength="Password needs to be a maximum of 64 characters"
                                data-msg="Please enter your password" autocomplete="new-password" required="">
                     </div>
 
                     <div class="session-input-group">
-                        <button type="submit" title="Login">Login</button>
+                        <button type="submit" title="Login" id="btnAdminLogin">Login</button>
                     </div>
 
                     <div class="form-final-line">Forgot your password? You can <a href="https://fast-poll.com/user/password/reset" title="Reset your password">reset it here</a></div>
