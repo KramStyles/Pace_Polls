@@ -1,10 +1,18 @@
 from flask import Flask, render_template, request
+from flask_login import login_required, login_user, logout_user, LoginManager, current_user
 from functions import functions, dbfunctions
+from users import User
 from config import *
 
 app = Flask(__name__)
 funcs = functions()
 db = dbfunctions()
+logManager = LoginManager(app)
+
+
+@logManager.user_loader
+def load_user(username):
+    return User(username)
 
 
 @app.context_processor
@@ -16,10 +24,8 @@ def showall():
     return dict(baseurl=BASE_URL, pg_vars=pg_vars)
 
 
-
-
-
 @app.route('/create')
+@login_required
 def hello_poll():
     categories = db.select('category_table')
     info = {
@@ -124,7 +130,6 @@ def adminEditPolls(title):
     return render_template('admin/edit_poll.html', pg=info, poll=poll)
 
 
-
 ##########################################
 
 @app.route('/admin_delete_poll', methods=['POST'])
@@ -220,12 +225,27 @@ def admin_edit_poll():
     # TODO: Work on editing polls
     return "hello"
 
+
 @app.route('/admin_sign_in', methods=['POST'])
 def admin_sign_in():
     username = request.form['username']
     password = request.form['password']
-
-    return funcs.printForm(request.form)
+    msg = ""
+    try:
+        if db.select('admin_table', f"where username = '{username}'", "password"):
+            db_password = db.select('admin_table', f"where username = '{username}'", "password")[0][0]
+            if funcs.verify(password, db_password):
+                user = User(username)
+                login_user(user, remember=True)
+                msg = "ok"
+            else:
+                msg = "Invalid Authentication"
+        else:
+            msg = "User not Found"
+    except Exception as err:
+        print("Login Error:", err)
+        msg = "Login Error: " + str(err)
+    return msg
 
 
 # ERROR HANDLING PAGES
@@ -238,6 +258,21 @@ def not_found(error='', title='', text=''):
     info = {
         'title': title.title(),
         'text': text
+    }
+    return render_template('404.html', pg=info)
+
+
+@app.errorhandler(401)
+def no_permission(error='', title='', text=''):
+    if not title:
+        title = "access denied"
+    if not text:
+        text = "You are not supposed to be here! You should login (Admin)"
+    info = {
+        'title': title.title(),
+        'text': text,
+        'link_text': "Login",
+        'link': '/login'
     }
     return render_template('404.html', pg=info)
 
