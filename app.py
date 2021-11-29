@@ -22,6 +22,7 @@ def showall():
     pg_vars = {
         'c_color': category_color,
         'replace': funcs.replacer,
+        'user': current_user.get_id()
     }
     return dict(baseurl=BASE_URL, pg_vars=pg_vars)
 

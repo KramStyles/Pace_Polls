@@ -37,31 +37,47 @@
 <nav>
 
     <div class="left">
-        <a href="https://pacesetterfrontier.com/" class="logo" title="Fast Poll"></a>
+        <a href="https://pacesetterfrontier.com/" class="logo" title="The Pacesetter Frontier"></a>
     </div>
-
-    <div class="mid">
-        <div class="nav-mid-links">
-            <a href="/polls" class="nav-link-poll" title="Create Poll">All Polls</a>
-            <a href="https://pacesetterfrontier.com/about-us/" class="nav-link-polls" title="Public Polls">About Us</a>
-            <a href="https://pacesetterfrontier.com/contact/" class="nav-link-polls" title="Go Pro">Contact</a>
-        </div>
-    </div>
-
-    <div class="right">
-
-        <div class="nav-links">
-            <a href="/login" class="signup-button" title="Sign In">Sign In</a>
-            <a href="/logout" class="signup-button bg-danger" title="Sign In">Logout</a>
-        </div>
-
-
-        <a class="hamburger hamburger--squeeze" href="#">
-            <div class="hamburger-box">
-                <div class="hamburger-inner"></div>
+    {% if pg_vars['user'] %}
+        <div class="mid">
+            <div class="nav-mid-links">
+                <a href="/polls" class="nav-link-poll" title="Create Poll">All Polls</a>
+                <a href="/create" class="nav-link-polls" title="Public Polls">Create New Poll</a>
+                <a href="/admin/polls" class="nav-link-polls" title="Go Pro">Edit Polls</a>
             </div>
-        </a>
-    </div>
+        </div>
+
+        <div class="right">
+            <div class="nav-links">
+                <a href="/logout" class="signup-button bg-danger" title="Sign In">Logout {{ pg_vars['user']|title }}</a>
+            </div>
+            <a class="hamburger hamburger--squeeze" href="#">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>
+    {% else %}
+        <div class="mid">
+            <div class="nav-mid-links">
+                <a href="/polls" class="nav-link-poll" title="Create Poll">All Polls</a>
+                <a href="https://pacesetterfrontier.com/about-us/" class="nav-link-polls" title="Public Polls">About Us</a>
+                <a href="https://pacesetterfrontier.com/contact/" class="nav-link-polls" title="Go Pro">Contact</a>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="nav-links">
+                <a href="/login" class="signup-button" title="Sign In">Sign In</a>
+            </div>
+            <a class="hamburger hamburger--squeeze" href="#">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>
+    {% endif %}
 </nav>
 
 
