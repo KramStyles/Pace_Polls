@@ -22,7 +22,8 @@ def showall():
     pg_vars = {
         'c_color': category_color,
         'replace': funcs.replacer,
-        'user': current_user.get_id()
+        'user': current_user.get_id(),
+        'fulldate': funcs.fulldate
     }
     return dict(baseurl=BASE_URL, pg_vars=pg_vars)
 
@@ -88,6 +89,7 @@ def results(title):
 
 
 @app.route('/polls')
+@app.route('/')
 def polls():
     polls = db.select('poll_table', "ORDER BY id DESC LIMIT 15")
     info = {

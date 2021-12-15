@@ -43,8 +43,8 @@
         <div class="mid">
             <div class="nav-mid-links">
                 <a href="/polls" class="nav-link-poll" title="Create Poll">All Polls</a>
-                <a href="/create" class="nav-link-polls" title="Public Polls">Create New Poll</a>
-                <a href="/admin/polls" class="nav-link-polls" title="Go Pro">Edit Polls</a>
+                <a href="/create" class="nav-link-polls" title="Make Poll">Create New Poll</a>
+                <a href="/admin/polls" class="nav-link-polls" title="Edit Polls">Edit Polls</a>
             </div>
         </div>
 
@@ -62,8 +62,8 @@
         <div class="mid">
             <div class="nav-mid-links">
                 <a href="/polls" class="nav-link-poll" title="Create Poll">All Polls</a>
-                <a href="https://pacesetterfrontier.com/about-us/" class="nav-link-polls" title="Public Polls">About Us</a>
-                <a href="https://pacesetterfrontier.com/contact/" class="nav-link-polls" title="Go Pro">Contact</a>
+                <a href="https://pacesetterfrontier.com/about-us/" class="nav-link-polls" title="Pacesetter Frontier">About Us</a>
+                <a href="https://pacesetterfrontier.com/contact/" class="nav-link-polls" title="Contact us">Contact</a>
             </div>
         </div>
 
@@ -80,20 +80,37 @@
     {% endif %}
 </nav>
 
+{% if pg_vars['user'] %}
 
 <div class="mobile-nav">
     <div class="mobile-nav-inner">
         <div class="nav-links">
-            <a href="" class="teams-nav-link" title="Go Pro">
-                <span>Go Pro</span>
+            <a href="/create" class="teams-nav-link" title="New">
+                <span>Create New Poll</span>
             </a>
-            <a href="" class="polls-button" title="Public Polls">Public Polls</a>
+            <a href="/admin/polls" class="polls-button" title="Edit">Edit Poll</a>
+            <div class="nav-divide"></div>
+            <a href="/logout" class="signup-button" title="Sign In">Sign Out</a>
+        </div>
+    </div>
+
+</div>
+{% else %}
+
+<div class="mobile-nav">
+    <div class="mobile-nav-inner">
+        <div class="nav-links">
+            <a href="https://pacesetterfrontier.com/about-us/" class="teams-nav-link" title="Pacesetter Frontier">
+                <span>About Us</span>
+            </a>
+            <a href="https://pacesetterfrontier.com/contact/" class="polls-button" title="Call us">Contact Us</a>
             <div class="nav-divide"></div>
             <a href="/login" class="signup-button" title="Sign In">Sign In</a>
         </div>
     </div>
 
 </div>
+{% endif %}
 
 
 {% block content %}{% endblock %}
@@ -105,11 +122,12 @@
         <div class="left">
             <a href="https://pacesetterfrontier.com/" class="fast-poll-icon" title="Fast Poll"></a>
             <div class="social-icons">
-                <a href="https://www.facebook.com/Fastpolls/" class="facebook-icon" target="_blank" title="Find us on Facebook"></a>
-                <a href="https://twitter.com/fastpoll_" class="twitter-icon" target="_blank" title="Find us on Twitter"></a>
+                <a href="https://facebook.com/pages/category/Magazine/The-Pacesetter-Magazine-139954923437505" class="facebook-icon" target="_blank" title="Find us on Facebook"></a>
+{#                <a href="https://twitter.com/fastpoll_" class="twitter-icon" target="_blank" title="Find us on Twitter"></a>#}
+                <a href="https://www.instagram.com/pacefrontier" class="fab fa-instagram fa-2x" target="_blank" style="color: rebeccapurple" title="Like our Instagram page"></a>
                 <a href="whatsapp://send?text=Welcome - https://pacesetterfrontier.com/" class="fab fa-whatsapp-square color-green fa-2x" target="_blank" title="Send us a Whatsapp Message"></a>
             </div>
-            <p class="copyright">&copy; 2021</p>
+            <p class="copyright">Copyright &copy; {{ pg_vars['fulldate']() }}</p>
         </div>
 
         <div class="right">
