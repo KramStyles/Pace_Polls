@@ -267,6 +267,7 @@ $('#btn-vote').click(function (e) {
     }
     if (allClear) {
         justAjax('#btn-vote', '#vote-poll-form', '/cast_votes');
+        $('#btn-show-results').removeClass('my-hide');
     } else {
         bootbox.alert("<p class='text-danger'>All votes are necessary!</p>");
     }
