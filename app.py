@@ -55,6 +55,7 @@ def logout():
 
 @app.route('/results/<title>')
 def results(title):
+    title = title.replace('%20', ' ')
     if not db.select('poll_table', f"where title = '{title}'", "title"):
         return not_found(title=title)
     else:
@@ -100,6 +101,7 @@ def polls():
 
 @app.route('/polls/<title>')
 def polls_title(title):
+    title = title.replace('%20', ' ')
     if not db.select('poll_table', f"where title = '{title}'", "title"):
         return not_found(title=title)
     else:
@@ -127,6 +129,7 @@ def adminPolls():
 
 @app.route('/admin/polls/<title>')
 def adminEditPolls(title):
+    title = title.replace('%20', ' ')
     if not db.select('poll_table', f"""where title = "{title}" """):
         return not_found("Incorrect Poll Item")
     else:
