@@ -102,7 +102,8 @@ def polls():
 @app.route('/polls/<title>')
 def polls_title(title):
     title = title.replace('%20', ' ')
-    if not db.select('poll_table', f"where title = '{title}'", "title"):
+
+    if not db.select('poll_table', f"where title = \"{title}\" ", "title"):
         return not_found(title=title)
     else:
         try:
@@ -210,7 +211,8 @@ def create_poll():
                 forms[key][c].append([request.form[item]][0])
                 c += 1
     try:
-        if db.select('poll_table', f"where title = '{title}'", "title"):
+
+        if db.select('poll_table', f'where title = """{title}"""', "title"):
             msg = "Title already exists"
         else:
             questions = {
@@ -219,8 +221,9 @@ def create_poll():
                 'category': category
             }
             db_questions = funcs.python_to_json(questions)
+
             noww = datetime.now().strftime("%A %B %d, %Y | %H:%M:%S")
-            msg = db.insert('poll_table', f"""'{title}', '{category}', '{noww}'""", "title, category, date")
+            msg = db.insert('poll_table', f'"{title}", "{category}", "{noww}" ', "title, category, date")
             try:
                 filename = f"{file_url}{title}.km"
                 file = open(filename, 'a')
