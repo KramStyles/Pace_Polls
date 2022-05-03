@@ -56,7 +56,9 @@ def logout():
 @app.route('/results/<title>')
 def results(title):
     title = title.replace('%20', ' ')
-    if not db.select('poll_table', f"where title = '{title}'", "title"):
+
+    if not db.select('poll_table', f"where title = \"{title}\" ", "title"):
+        print('title', title)
         return not_found(title=title)
     else:
         try:
@@ -174,9 +176,9 @@ def cast_votes():
         re_raw = funcs.python_to_json(db_question)
         re_file.write(re_raw)
         re_file.close()
-        db_vote = db.select('poll_table', f"where title = '{title}'", 'votes')[0][0]
+        db_vote = db.select('poll_table', f"where title = \"{title}\" ", 'votes')[0][0]
         votes += db_vote
-        db.update('poll_table', f"votes = {votes}", f"where title='{title}'")
+        db.update('poll_table', f"votes = {votes}", f"where title=\"{title}\" ")
         return 'ok'
     except Exception as err:
         return f"Err msg: {err}"
