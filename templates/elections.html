@@ -22,11 +22,13 @@
                     </div>
 
                 </div>
-                <div class="poll-top-ad-inner p-3 mt-2" style="height: 300px; max-height: 300px; font-family: poppins, 'sans-serif' !important;">
+                <div class="poll-top-ad-inner p-3 mt-2" id="mypoll_top">
                     <div class="poll-top-ad-copy" style="width: 100%">
                         <p class="text-justify">
                         <div href="javascript:;" target="_blank" class="fp-ad-space"
                              title="">
+                            <h2>2023 Elections. Who will be your Governor in 2023?</h2>
+                            <h4>Opinion Governorship opinion poll for major political parties in Nigeria</h4>
                             <article><b>Duration of Poll</b>: 5 days</article>
                             <article><b>States of Focus</b>: Abia, Akwa Ibom, Cross River, Delta, Ebonyi, Enugu, Rivers</article>
                             <article><b>Geopolitical Zones</b>: Southeast and Southsouth</article>
@@ -119,6 +121,15 @@
         .fp-ad-space article{
             line-height: 30px;
         }
+        .fp-ad-space h2, .fp-ad-space h4{
+            font-size: 1.32em;
+            font-family: Poppins, 'sans-serif';
+            font-weight: bold;
+        }
+        .fp-ad-space h4{
+            font-size: 1.2em;
+            padding-bottom: 20px ;
+        }
         .css-vote-button.pds-vote-button{
             padding: 15px 25px !important;
             font-size: 22px;
@@ -126,6 +137,21 @@
             border: none;
             outline: none;
             cursor:pointer;
+        }
+        #mypoll_top{
+            height: 400px;
+            max-height: 400px;
+            font-family: poppins, 'sans-serif' !important;
+        }
+        @media screen and (max-width: 500px){
+            .css-input-label.pds-input-label{
+                padding: 15px !important;
+                font-size: 20px;
+            }
+            #mypoll_top{
+                height: 650px;
+                max-height: 650px;
+            }
         }
     </style>
 {% endblock %}
