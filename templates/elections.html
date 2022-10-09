@@ -20,6 +20,23 @@
                                 We are a leading electronic and print media magazine committed to making a stride in time; we care about quality content. </a>
                         </p>
                     </div>
+
+                </div>
+                <div class="poll-top-ad-inner p-3 mt-2" style="height: 300px; max-height: 300px; font-family: poppins, 'sans-serif' !important;">
+                    <div class="poll-top-ad-copy" style="width: 100%">
+                        <p class="text-justify">
+                        <div href="javascript:;" target="_blank" class="fp-ad-space"
+                             title="">
+                            <article><b>Duration of Poll</b>: 5 days</article>
+                            <article><b>States of Focus</b>: Abia, Akwa Ibom, Cross River, Delta, Ebonyi, Enugu, Rivers</article>
+                            <article><b>Geopolitical Zones</b>: Southeast and Southsouth</article>
+                            <article><b>Number of Political Parties Per State</b>: 5</article>
+                            <article><b>Means of Selection</b>: Political parties with traction in the respective states</article>
+                            <article><b>Sequence</b>: Alphabetical order listing of names of political parties</article>
+                            <article><b>Note</b>: Candidates are INEC-listed candidates standing nominated for governorship elections</article>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="polls-list animated zoomIn">
@@ -53,16 +70,32 @@
         </div>
     </main>
     <style>
-        .css-links.pds-links{
+        .css-links.pds-links {
             display: none !important;
         }
-        .css-box.pds-box{
+
+        .css-box.pds-box, .pds-box {
             width: 100% !important;
+            border-radius: 5px;
+            box-shadow: 0 7px 14px 0 rgb(0, 0, 0, 0.07);
         }
-        .CSS_Poll.PDS_Poll{
+
+        .pds-answer-feedback {
+            padding: 2px !important;
+            height: 20px !important;
+            border-radius: 50px;
+        }
+
+        .pds-answer-feedback-bar {
+            border-radius: 50px;
+            background-color: #ED3237 !important;
+        }
+
+        .CSS_Poll.PDS_Poll {
             margin: 10px auto;
         }
-        .css-input-label.pds-input-label{
+
+        .css-input-label.pds-input-label {
             cursor: pointer;
             display: inline-block;
             background-color: #FFF;
@@ -77,10 +110,22 @@
             border: 2px solid #FFF;
             line-height: 32px;
         }
-        .css-radiobutton.pds-radiobutton{
+
+        .css-radiobutton.pds-radiobutton {
             height: 40px;
             width: 20px;
             margin: 20px .5ex !important;
+        }
+        .fp-ad-space article{
+            line-height: 30px;
+        }
+        .css-vote-button.pds-vote-button{
+            padding: 15px 25px !important;
+            font-size: 22px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            cursor:pointer;
         }
     </style>
 {% endblock %}
