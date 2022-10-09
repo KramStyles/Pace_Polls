@@ -47,6 +47,14 @@ def login():
     return render_template('login.html', pg=info)
 
 
+@app.route('/elections')
+def elections():
+    info = {
+        'title': 'Elections'
+    }
+    return render_template('elections.html', pg=info)
+
+
 @app.route('/logout')
 def logout():
     logout_user()
@@ -56,6 +64,7 @@ def logout():
 @app.route('/results/<title>')
 def results(title):
     if not db.select('poll_table', f"where title = '{title}'", "title"):
+        print('checked here')
         return not_found(title=title)
     else:
         try:

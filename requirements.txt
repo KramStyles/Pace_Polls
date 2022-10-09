@@ -2,3 +2,4 @@ passlib
 pymysql
 flask
 uwsgi
+flask-login
