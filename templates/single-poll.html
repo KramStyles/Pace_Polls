@@ -35,15 +35,15 @@
                                 <div class="item-dropdown animated-dropdown bounceIn social-share-links inline ">
                                     <div class="item-dropdown-links-wrapper">
                                         <div class="item-dropdown-inner">
-                                            <a href="https://twitter.com/intent/tweet/?text={{ pg['questions']['title'] }}?%20Vote%20now%20at%20&amp;url={{ baseurl }}polls/{{ pg['questions']['title'] }}"
+                                            <a href="https://twitter.com/intent/tweet/?text={{ pg['questions']['title'] }}?%20Vote%20now%20at%20&amp;url={{ baseurl }}polls/{{ pg_vars['replace'](' ', '%20', pg['questions']['title']) }}"
                                                target="_blank"
                                                class="twitter-dropdown-link" title="Share on Twitter">Share on Twitter</a>
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank" class="fb-dropdown-link"
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ baseurl }}polls/{{ pg_vars['replace'](' ', '%20', pg['questions']['title']) }}" target="_blank" class="fb-dropdown-link"
                                                title="Share on Facebook">Share on Facebook</a>
-                                            <a href="https://api.whatsapp.com/send?text={{ pg['questions']['title'] }} ?%20-%20Vote%20now%20at%20{{ baseurl }}polls/{{ pg['questions']['title'] }}"
+                                            <a href="https://api.whatsapp.com/send?text={{ pg['questions']['title'] }} ?%20-%20Vote%20now%20at%20{{ baseurl }}polls/{{ pg_vars['replace'](' ', '%20', pg['questions']['title']) }}"
                                                target="_blank"
                                                class="whatsapp-dropdown-link" title="Share on WhatsApp">Share on WhatsApp</a>
-                                            {#                                            <a href="#" data-reveal-id="copy-url-modal" class="url-dropdown-link" title="Share Link">Share Link</a>#}
+                                            {#                                            <a href="#" data-reveal-id="copy-url-modal" class="url-dropdown-link" title="Share Link">Share Link</a>
                                             {#                                            <a href="#" data-reveal-id="qr-code-modal" class="qr-code-dropdown-link" title="Share QR Code">Share QR Code</a>#}
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                         <div id="poll-error"></div>
                         <div class="poll-footer">
                             <button title="Submit your vote" id="btn-vote">Submit your vote </button>
-                            <a href="{{ baseurl }}results/{{ pg['questions']['title'] }}" class="poll-results-button my-hide" title="Jump to results">Jump to results</a>
+                            <a href="{{ baseurl }}results/{{ pg['questions']['title'] }}" class="btn btn-outline-danger poll-results-button my-hide" title="Jump to results" id="btn-show-results">Jump to results</a>
                         </div>
                     </form>
                 </div>

@@ -63,8 +63,10 @@ def logout():
 
 @app.route('/results/<title>')
 def results(title):
-    if not db.select('poll_table', f"where title = '{title}'", "title"):
-        print('checked here')
+    title = title.replace('%20', ' ')
+
+    if not db.select('poll_table', f"where title = \"{title}\" ", "title"):
+        print('title', title)
         return not_found(title=title)
     else:
         try:
@@ -109,7 +111,9 @@ def polls():
 
 @app.route('/polls/<title>')
 def polls_title(title):
-    if not db.select('poll_table', f"where title = '{title}'", "title"):
+    title = title.replace('%20', ' ')
+
+    if not db.select('poll_table', f"where title = \"{title}\" ", "title"):
         return not_found(title=title)
     else:
         try:
@@ -136,6 +140,7 @@ def adminPolls():
 
 @app.route('/admin/polls/<title>')
 def adminEditPolls(title):
+    title = title.replace('%20', ' ')
     if not db.select('poll_table', f"""where title = "{title}" """):
         return not_found("Incorrect Poll Item")
     else:
@@ -179,9 +184,9 @@ def cast_votes():
         re_raw = funcs.python_to_json(db_question)
         re_file.write(re_raw)
         re_file.close()
-        db_vote = db.select('poll_table', f"where title = '{title}'", 'votes')[0][0]
+        db_vote = db.select('poll_table', f"where title = \"{title}\" ", 'votes')[0][0]
         votes += db_vote
-        db.update('poll_table', f"votes = {votes}", f"where title='{title}'")
+        db.update('poll_table', f"votes = {votes}", f"where title=\"{title}\" ")
         return 'ok'
     except Exception as err:
         return f"Err msg: {err}"
@@ -216,7 +221,8 @@ def create_poll():
                 forms[key][c].append([request.form[item]][0])
                 c += 1
     try:
-        if db.select('poll_table', f"where title = '{title}'", "title"):
+
+        if db.select('poll_table', f'where title = """{title}"""', "title"):
             msg = "Title already exists"
         else:
             questions = {
@@ -225,8 +231,9 @@ def create_poll():
                 'category': category
             }
             db_questions = funcs.python_to_json(questions)
+
             noww = datetime.now().strftime("%A %B %d, %Y | %H:%M:%S")
-            msg = db.insert('poll_table', f"""'{title}', '{category}', '{noww}'""", "title, category, date")
+            msg = db.insert('poll_table', f'"{title}", "{category}", "{noww}" ', "title, category, date")
             try:
                 filename = f"{file_url}{title}.km"
                 file = open(filename, 'a')

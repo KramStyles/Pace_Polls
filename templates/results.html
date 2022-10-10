@@ -115,22 +115,22 @@
 
                                         <ul>
                                             <li>
-                                                <a href="https://twitter.com/intent/tweet/?text={{ pg['questions']['title'] }}%20Vote%20now%20at%20&amp;url={{ baseurl }}polls/{{ pg['questions']['title'] }}"
+                                                <a href="https://twitter.com/intent/tweet/?text={{ pg['questions']['title'] }}%20Vote%20now%20at%20&amp;url={{ baseurl }}polls/{{ pg_vars['replace'](' ', '%20', pg['questions']['title']) }}"
                                                    target="_blank" class="share-link twitter" title="Share on Twitter">Share on Twitter</a>
                                             </li>
 
                                             <li>
-                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank" class="share-link facebook"
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ baseurl }}polls/{{ pg_vars['replace'](' ', '%20', pg['questions']['title']) }}" target="_blank" class="share-link facebook"
                                                    title="Share on Facebook">Share on Facebook</a>
                                             </li>
 
                                             <li>
-                                                <a href="https://api.whatsapp.com/send?text={{ pg['questions']['title'] }}%20-%20Vote%20now%20at%20{{ baseurl }}polls/{{ pg['questions']['title'] }}" target="_blank"
+                                                <a href="https://api.whatsapp.com/send?text={{ pg['questions']['title'] }}%20-%20Vote%20now%20at%20{{ baseurl }}polls/{{ pg_vars['replace'](' ', '%20', pg['questions']['title']) }}" target="_blank"
                                                    class="share-link whatsapp" title="Share on WhatsApp">Share on WhatsApp</a>
                                             </li>
 
                                             <li>
-                                                <a href="{{ baseurl }}polls/{{ pg['questions']['title'] }}" data-reveal-id="copy-url-modal" class="share-link link" title="Share Link">Share Link</a>
+                                                <a href="{{ baseurl }}polls/{{ pg_vars['replace'](' ', '%20', pg['questions']['title']) }}" data-reveal-id="copy-url-modal" class="share-link link" title="Share Link">Share Link</a>
                                             </li>
 
                                         </ul>
