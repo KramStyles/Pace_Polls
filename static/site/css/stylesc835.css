@@ -380,12 +380,12 @@ nav .right .nav-links a.signup-button:hover {
 }
 
 footer {
-    float: left;
     width: 100%;
     background-color: #FFFFFF;
     padding: 50px 0px;
     z-index: 50;
-    position: relative;
+    position: fixed;
+    bottom: 0;
 }
 
 footer .left {
