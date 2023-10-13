@@ -110,8 +110,10 @@ def polls():
     return render_template("polls.html", polls=polls, pg=info)
 
 
-@app.route("/polls")
+@app.route("/polls/")
 @app.route("/")
+@app.route("/2023/10/05/voting-poll-for-nominees-in-the-third-frontier-discourse-annual-public-lecture-and-awards/")
+@app.route("/frontier-discourse/")
 def temp_poll():
     info = {"title": "Pacesetter Polls"}
     return render_template("temp.html", pg=info)
