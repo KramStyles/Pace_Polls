@@ -101,8 +101,7 @@ def results(title):
             return not_found(text="Result error occurred. Contact Admin!")
 
 
-@app.route("/polls")
-@app.route("/")
+@app.route("/original")
 def polls():
     polls = db.select("poll_table", "ORDER BY id DESC LIMIT 15")
     info = {
@@ -111,7 +110,8 @@ def polls():
     return render_template("polls.html", polls=polls, pg=info)
 
 
-@app.route("/temp")
+@app.route("/polls")
+@app.route("/")
 def temp_poll():
     info = {"title": "Pacesetter Polls"}
     return render_template("temp.html", pg=info)

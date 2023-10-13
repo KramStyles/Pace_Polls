@@ -381,11 +381,9 @@ nav .right .nav-links a.signup-button:hover {
 
 footer {
     width: 100%;
-    background-color: #FFFFFF;
     padding: 50px 0px;
-    z-index: 50;
-    position: fixed;
-    bottom: 0;
+    /*position: fixed;*/
+    clear:both;
 }
 
 footer .left {
@@ -447,6 +445,7 @@ footer .right {
 
 footer .right .right-columns {
     float: right;
+    padding: 50px 0;
 }
 
 footer .right .right-columns .footer-column {
@@ -13441,7 +13440,7 @@ a.delete-stored-data-link:hover {
 
     footer .right .right-columns {
         float: left;
-        padding-top: 50px;
+        padding: 50px 0;
         width: 100%;
     }
 
