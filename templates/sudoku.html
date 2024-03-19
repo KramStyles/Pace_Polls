@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9x9 Sudoku Grids</title>
+<style>
+    /* Adjust page margins */
+    @page {
+        /* margin: 1in 1.25in; */
+        size: A4;
+    }
+
+    /* Style for Sudoku grids */
+    .sudoku-grid {
+        display: inline-block;
+        width: calc(30.33% - 20px);
+        margin: 10px;
+        border: 1px solid #000;
+        box-sizing: border-box;
+        background-color: yellow;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .cell {
+        width: calc(100% / 9);
+        height: 40px;
+        border: 1px solid #888;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 40px;
+    }
+</style>
+</head>
+<body>
+    <div class="sudoku-grid" id="sudoku">
+        <!-- Sudoku grid 1 -->
+        <div class="row">
+            <!-- Add more cells as needed -->
+        </div>
+        <!-- Add more rows as needed -->
+    </div>
+    <!-- Add more sudoku grids as needed -->
+    <div class="sudoku-grid" id="sudoku2"></div>
+    <div class="sudoku-grid" id="sudoku3"></div>
+    <div class="sudoku-grid" id="sudoku4"></div>
+    <div class="sudoku-grid" id="sudoku5"></div>
+
+    <script>
+        const grid = document.getElementById("sudoku");
+        const grid2 = document.getElementById("sudoku2");
+        const grid3 = document.getElementById("sudoku3");
+        const grid4 = document.getElementById("sudoku4");
+        const grid5 = document.getElementById("sudoku5");
+        let content = "";
+        // Make script generate 9 rows and 9 cells each in the rows
+        for (let i=0; i < 9; i++) {
+            let row = ""
+            for (let j=0; j < 9; j++) {
+                row += `<div class='cell'>${j+1}</div>`
+            }
+            content += `<div class="row">${row}</div>`;
+        }
+        grid.innerHTML = content;
+        grid2.innerHTML = content;
+        grid3.innerHTML = content;
+        grid4.innerHTML = content;
+        grid5.innerHTML = content;
+    </script>
+</body>
+</html>
